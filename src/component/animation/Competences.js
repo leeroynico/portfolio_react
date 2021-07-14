@@ -1,25 +1,35 @@
 import React from "react";
-import { useChain, animated } from "react-spring";
+import { useState } from "react";
+import { useSpring, animated } from "react-spring";
 
 export default function Competences() {
-  // Build a spring and catch its ref
-  const springRef = useSpringRef();
-  const props = useSpring({ ...values, ref: springRef });
-  // Build a transition and catch its ref
-  const transitionRef = useSpringRef();
-  const transitions = useTransition({ ...values, ref: transitionRef });
-  // First run the spring, when it concludes run the transition
-  useChain([springRef, transitionRef]);
-  // Use the animated props like always
+  const [flipped, set] = useState(false);
+  const { transform, opacity } = useSpring({
+    opacity: flipped ? 1 : 0,
+    transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
+    config: { mass: 5, tension: 500, friction: 80 },
+  });
   return (
-    <animated.div style={props}>
-      {transitions((styles) => (
-        <animated.div style={styles} />
-      ))}
-    </animated.div>
+    <div onClick={() => set((state) => !state)}>
+      <animated.div
+        style={{
+          width: 80,
+          height: 80,
+          backgroundColor: "#46e891",
+          opacity: opacity.to((o) => 1 - o),
+          transform,
+        }}
+      />
+      <animated.div
+        style={{
+          width: 80,
+          height: 80,
+          backgroundColor: "red",
+          opacity,
+          transform,
+          rotateX: "180deg",
+        }}
+      />
+    </div>
   );
-
-  // The spring will start right away: 0.0 * 1000ms = 0ms
-  // The transition will start after: 0.5 * 1000ms (the timeFrame default) = 500ms
-  useChain([springRef, transitionRef], [0, 0.5] /*1000*/);
 }
