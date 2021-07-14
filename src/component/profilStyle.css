@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap");
+
+#profilCard {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  backdrop-filter: blur(4px) saturate(14%);
+  -webkit-backdrop-filter: blur(4px) saturate(64%);
+  background-color: rgba(72, 74, 80, 0.37);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  color: rgb(228, 226, 224);
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profilpic {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 8px;
+  border: rgba(125, 185, 246, 0.648) solid 5px;
+}

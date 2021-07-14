@@ -1,10 +1,14 @@
 import React from "react";
 import background from "./images/background.jpg";
 import Profil from "./component/Profil";
+import Speedial from "./component/Speedial";
+import Competences from "./component/animation/Competences";
+import "./App.css";
 
 function App() {
   return (
     <div
+      className="app"
       style={{
         backgroundImage: `url(${background})`,
         backgroundPosition: "center",
@@ -14,8 +18,9 @@ function App() {
         color: "white",
       }}
     >
-      <p>mon portfolio </p>
-      <Profil></Profil>
+      <Profil />
+      <Competences />
+      <Speedial />
     </div>
   );
 }
