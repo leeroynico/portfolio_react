@@ -1,5 +1,6 @@
 import React from "react";
 import background from "./images/background.jpg";
+import Profil from "./component/Profil";
 
 function App() {
   return (
@@ -10,9 +11,11 @@ function App() {
         backgroundSize: "cover",
         paddingTop: 20,
         height: 1000,
+        color: "white",
       }}
     >
-      <p style={{ color: "white" }}>mon portfolio </p>
+      <p>mon portfolio </p>
+      <Profil></Profil>
     </div>
   );
 }
