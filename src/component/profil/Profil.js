@@ -6,12 +6,12 @@ import {
   CardContent,
   Avatar,
   Chip,
+  Divider,
 } from "@material-ui/core";
-import profilPic from "../images/profil.png";
-import github from "../images/reseaux/github.png";
-import linkedin from "../images/reseaux/linkedinlogo.png";
+import profilPic from "../../images/profil.png";
+import github from "../../images/reseaux/github.png";
+import linkedin from "../../images/reseaux/linkedinlogo.png";
 import "./profilStyle.css";
-import { Divider } from "@material-ui/core";
 
 function Profil() {
   return (
@@ -53,7 +53,7 @@ function Profil() {
           variant="h5"
           component="div"
         >
-          Orienté Front-End (React), mais ouvert au Back-end
+          Open to work
         </Typography>
       </CardContent>
       <CardActions>

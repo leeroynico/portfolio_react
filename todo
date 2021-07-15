@@ -4,3 +4,7 @@ animation css :
 
 features : 
   ☐ finir les speedial boutons 
+  ☐ tableau + map pour les technos
+
+  design: 
+    ☐ responsive CardCompetences.js 'front-end' chip
