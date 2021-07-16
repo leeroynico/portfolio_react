@@ -3,9 +3,11 @@ import background from "./images/background.jpg";
 import Profil from "./component/profil/Profil";
 import Speedial from "./component/Speedial";
 import Competences from "./component/animationCompetences/Competences";
-import Projets from "./component/projets/Projets";
+import DragProjets from "./component/projets/DragProjets";
 import { useSpring, animated } from "react-spring";
 import "./App.css";
+import { Typography } from "@material-ui/core";
+import allProjets from "./component/projets/AllProjets";
 
 const calc = (x, y) => [
   (y - window.innerHeight / 3) / 20,
@@ -24,11 +26,6 @@ function App() {
     <div
       className="app"
       style={{
-        backgroundImage: `url(${background})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        paddingTop: 20,
-        height: 1000,
         color: "white",
       }}
     >
@@ -39,8 +36,11 @@ function App() {
       >
         <Profil />
       </animated.div>
-
-      <Projets />
+      <Typography align="center">Mes Projets</Typography>
+      {allProjets.map((item) => (
+        <DragProjets content={item} />
+      ))}
+      {/* <DragProjets content={allProjets[0]} /> */}
       {/* <Competences /> */}
       <Speedial />
     </div>
