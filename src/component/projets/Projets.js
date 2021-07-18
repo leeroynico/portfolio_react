@@ -13,8 +13,17 @@ import ControlPointIcon from "@material-ui/icons/ControlPoint";
 import "./projetStyle.css";
 
 export default function Projets(props) {
+  console.log(window.innerHeight);
   return (
-    <Card className="cardContainer" sx={{ maxWidth: 230 }}>
+    <Card
+      className="cardContainer"
+      sx={{
+        maxWidth: 180,
+        position: "relative",
+        top: props.content.position.y,
+        left: props.content.position.x,
+      }}
+    >
       <CardMedia
         component="img"
         alt="appImg"
@@ -27,7 +36,7 @@ export default function Projets(props) {
         style={{ marginBottom: -20 }}
         action={
           <IconButton
-            startIcon={<ControlPointIcon />}
+            starticon={<ControlPointIcon />}
             sx={{ color: "#007bb5", marginTop: 1.5 }}
             size="large"
           >
