@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardActions,
@@ -13,14 +14,34 @@ import ControlPointIcon from "@material-ui/icons/ControlPoint";
 import "./projetStyle.css";
 
 export default function Projets(props) {
-  console.log(window.innerHeight);
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  console.log(windowSize);
   return (
     <Card
       className="cardContainer"
       sx={{
-        maxWidth: 180,
+        maxWidth: windowSize.width < 600 ? 160 : 220,
         position: "relative",
-        top: props.content.position.y,
+        top:
+          windowSize.width < 600
+            ? props.content.position.y
+            : props.content.position.y + 200,
         left: props.content.position.x,
         transform: `rotate(${props.content.position.rotate}deg)`,
       }}
