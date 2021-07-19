@@ -10,7 +10,7 @@ const allProjets = [
     texte:
       "  Application mobile pour aider les compétiteurs de badminton à s'entrainer seul",
     img: appImg,
-    position: { x: "50%", y: "50%" },
+    position: { x: "50%", y: 50, rotate: "50deg" },
   },
   {
     titre: "#2projet",
@@ -18,7 +18,7 @@ const allProjets = [
     definition: "site statique [Bootstrap]",
     texte: " Site vitrine pour une Cie de théâtre locale (ou pas)",
     img: speculosImg,
-    position: { x: 120, y: -100 },
+    position: { x: "50%", y: -300, rotate: 10 },
   },
   {
     titre: "#3projet",
@@ -27,7 +27,7 @@ const allProjets = [
     texte:
       " Voila un 'fake' site e-commerce réalisé lors de mon stage chez diggit-all",
     img: eshopImg,
-    position: { x: 230, y: -280 },
+    position: { x: "50%", y: -650, rotate: 20 },
   },
   {
     titre: "#4projet",
@@ -36,7 +36,7 @@ const allProjets = [
     texte:
       "Organisation d'un championnat interne (gestion et stockage des résultats, invitation pour les matchs)",
     img: appImg,
-    position: { x: 350, y: -700 },
+    position: { x: "52%", y: -1050, rotate: -20 },
   },
 ];
 

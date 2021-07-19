@@ -23,10 +23,14 @@ export default function BasicSpeedDial() {
   return (
     <>
       <Dialog active={active} setActive={setActive} />
-      <Box sx={{ height: 400, transform: "translateZ(0px)", flexGrow: 1 }}>
+      <Box>
         <SpeedDial
+          sx={{
+            position: "fixed",
+            bottom: 20,
+            right: 20,
+          }}
           ariaLabel="SpeedDial"
-          sx={{ position: "absolute", bottom: 16, right: 16 }}
           icon={<ContactMailIcon />}
         >
           <SpeedDialAction

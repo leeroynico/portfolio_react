@@ -22,6 +22,7 @@ export default function Projets(props) {
         position: "relative",
         top: props.content.position.y,
         left: props.content.position.x,
+        transform: `rotate(${props.content.position.rotate}deg)`,
       }}
     >
       <CardMedia
