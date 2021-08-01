@@ -17,7 +17,6 @@ export default function Competences() {
         style={{
           position: "absolute",
           width: "80%",
-
           zIndex: 2,
           opacity: opacity.to((o) => 1 - o),
           transform,

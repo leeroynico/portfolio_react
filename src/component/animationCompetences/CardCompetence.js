@@ -57,16 +57,15 @@ const category = [
 export default function CardCompetence() {
   return (
     <List id="listTechno">
-      {category.map((item) => (
-        <>
+      {category.map((item, i) => (
+        <div key={i}>
           <Typography align="center" variant="h4" sx={{ fontFamily: "Teko" }}>
             {item.titre}
           </Typography>
           <ListItem>
-            {item.logos.map((x) => (
-              <span className="center">
+            {item.logos.map((x, index) => (
+              <span key={index} className="center">
                 <Chip
-                  key={x.img}
                   avatar={<Avatar alt={x.img} src={x.img} />}
                   label={x.titre}
                   variant="outlined"
@@ -81,7 +80,7 @@ export default function CardCompetence() {
             ))}
           </ListItem>
           <Divider sx={{ borderColor: "white" }} />
-        </>
+        </div>
       ))}
     </List>
   );

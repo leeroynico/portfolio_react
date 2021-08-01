@@ -13,6 +13,14 @@ html {
   width: 100%;
 }
 
+.border {
+  border: 3px solid rgba(255, 255, 255, 0.65);
+  height: 550px;
+  margin-bottom: 20%;
+  margin-top: 8%;
+  border-radius: 30px;
+  padding-top: -20%;
+}
 /* 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

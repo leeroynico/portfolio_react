@@ -1,12 +1,12 @@
 animation css : 
 ☐ animation pour afficher profil sur le blur 
-☐ trouver bonne position speedial 
-☐ donner positions départs des cards projets 
+✔ trouver bonne position speedial @done(21-07-19 14:43)
+✔ donner positions départs des cards projets @done(21-07-19 14:43)
 ☐ gérer Z index des cartes projets 
 
 features : 
   ☐ finir les speedial boutons 
-  ☐ tableau + map pour les technos
+  ✔ tableau + map pour les technos @done(21-07-19 14:43)
 
   design: 
     ☐ responsive CardCompetences.js 'front-end' chip

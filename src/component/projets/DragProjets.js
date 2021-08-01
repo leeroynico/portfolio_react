@@ -1,67 +1,86 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useGesture, useDrag } from "react-use-gesture";
 import Projets from "./Projets";
+import allProjets from "./AllProjets";
+import { useSprings } from "react-spring";
+import { DownloadTwoTone } from "@material-ui/icons";
 
-export default function DragProjets(props) {
-  // const [width]
-  // useEffect(() => {
-  //   const preventDefault = (e) => e.preventDefault();
-  //   document.addEventListener("gesturestart", preventDefault);
-  //   document.addEventListener("gesturechange", preventDefault);
+function Drag({ projet }) {
+  useEffect(() => {
+    const preventDefault = (e) => e.preventDefault();
+    document.addEventListener("gesturestart", preventDefault);
+    document.addEventListener("gesturechange", preventDefault);
+    return () => {
+      document.removeEventListener("gesturestart", preventDefault);
+      document.removeEventListener("gesturechange", preventDefault);
+    };
+  }, []);
 
-  //   return () => {
-  //     document.removeEventListener("gesturestart", preventDefault);
-  //     document.removeEventListener("gesturechange", preventDefault);
-  //   };
-  // }, []);
-  console.log(props.content.position.x);
-  const domTarget = useRef(null);
-  const [{ x, y, rotateX, rotateY, rotateZ }, api] = useSpring(() => ({
-    rotateX: 0,
-    rotateY: 0,
-    rotateZ: 0,
+  const [active, setActive] = useState(false);
+  const [springs, api] = useSprings(4, () => ({
     x: 0,
     y: 0,
+    scale: 1,
+    zIndex: 1,
   }));
 
-  // useGesture(
-  //   {
-  //     onDrag: ({ offset: [x, y] }) => api({ x, y, rotateX: 0, rotateY: 0 }),
-  //   },
-  //   { domTarget, eventOptions: { passive: false } }
-  // );
-
-  const bind = useDrag(
-    ({ down, offset: [ox, oy] }) =>
-      api.start({ x: ox, y: oy, immediate: down }),
-    {
-      bounds: {
-        left: -200,
-        right: 100,
-        top: -50,
-        bottom: 50,
-      },
-      rubberband: true,
-      tap: true,
+  const bindCard = useDrag((params) => {
+    let x = params.offset[0];
+    let y = params.offset[1];
+    let scale;
+    let zIndex;
+    console.log(params);
+    if (params.down) {
+      scale = 1.05;
+      setActive(true);
+      //zIndex = 500;
+    } else {
+      scale = 1;
+      setActive(false);
+      // zIndex = 30;
     }
-  );
+
+    api.start(() => {
+      return {
+        x,
+        y,
+        scale,
+        zIndex,
+      };
+    });
+  });
+
   return (
-    <div>
-      <animated.div
-        {...bind()}
-        ref={domTarget}
-        style={{
-          x,
-          y,
-          rotateX,
-          rotateY,
-          rotateZ,
-          touchAction: "none",
-        }}
-      >
-        <Projets content={props.content} />
-      </animated.div>
+    <div style={{ position: "relative", width: "100%", height: "500px" }}>
+      {springs.map(({ x, scale }, i) => (
+        <animated.div
+          {...bindCard(i)}
+          key={i}
+          style={{
+            x,
+            //  scale,
+            // zIndex: scale.to([1, 1.05], [10, 500]),
+            position: "relative",
+          }}
+          // children={projet}
+        >
+          <Projets content={allProjets[i]} />
+        </animated.div>
+      ))}
     </div>
+  );
+}
+
+export default function DragProjets() {
+  return (
+    <>
+      <Drag />
+      {/* {allProjets.map((item) => (
+        <div key={item.id} draggable="false" style={{ display: "flex" }}>
+          <Drag projet={<Projets content={item} />}></Drag>
+        </div>
+      ))} */}
+    </>
   );
 }
