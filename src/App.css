@@ -7,6 +7,8 @@
     ),
     radial-gradient(at 82% 65%, hsl(246.55, 66%, 36%) 0, transparent 55%);
   color: whitesmoke;
+
+  background-size: contain;
 }
 
 html {
@@ -19,28 +21,15 @@ html {
   margin-bottom: 20%;
   margin-top: 8%;
   border-radius: 30px;
-  padding-top: -20%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
+
 /* 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {

@@ -1,12 +1,12 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
-import { useSpring, animated } from "@react-spring/web";
-import { useGesture, useDrag } from "react-use-gesture";
+import React, { useEffect } from "react";
+import { animated } from "@react-spring/web";
+import { useDrag } from "react-use-gesture";
 import Projets from "./Projets";
 import allProjets from "./AllProjets";
 import { useSprings } from "react-spring";
-import { DownloadTwoTone } from "@material-ui/icons";
+import { Typography } from "@material-ui/core";
 
-function Drag({ projet }) {
+function Drag() {
   useEffect(() => {
     const preventDefault = (e) => e.preventDefault();
     document.addEventListener("gesturestart", preventDefault);
@@ -17,53 +17,28 @@ function Drag({ projet }) {
     };
   }, []);
 
-  const [active, setActive] = useState(false);
-  const [springs, api] = useSprings(4, () => ({
+  const [springs, api] = useSprings(allProjets.length, () => ({
     x: 0,
-    y: 0,
-    scale: 1,
-    zIndex: 1,
   }));
 
   const bindCard = useDrag((params) => {
     let x = params.offset[0];
-    let y = params.offset[1];
-    let scale;
-    let zIndex;
-    console.log(params);
-    if (params.down) {
-      scale = 1.05;
-      setActive(true);
-      //zIndex = 500;
-    } else {
-      scale = 1;
-      setActive(false);
-      // zIndex = 30;
-    }
-
     api.start(() => {
       return {
         x,
-        y,
-        scale,
-        zIndex,
       };
     });
   });
 
   return (
     <div style={{ position: "relative", width: "100%", height: "500px" }}>
-      {springs.map(({ x, scale }, i) => (
+      {springs.map(({ x }, i) => (
         <animated.div
-          {...bindCard(i)}
+          {...bindCard()}
           key={i}
           style={{
             x,
-            //  scale,
-            // zIndex: scale.to([1, 1.05], [10, 500]),
-            position: "relative",
           }}
-          // children={projet}
         >
           <Projets content={allProjets[i]} />
         </animated.div>
@@ -75,10 +50,17 @@ function Drag({ projet }) {
 export default function DragProjets() {
   return (
     <>
+      <Typography
+        align="center"
+        variant="h3"
+        sx={{ fontFamily: "Teko", marginBottom: -4 }}
+      >
+        Mes Projets
+      </Typography>
       <Drag />
-      {/* {allProjets.map((item) => (
-        <div key={item.id} draggable="false" style={{ display: "flex" }}>
-          <Drag projet={<Projets content={item} />}></Drag>
+      {/* {allProjets.map((item, i) => (
+        <div>
+          <Drag key={i} projet={<Projets content={item} />} />
         </div>
       ))} */}
     </>

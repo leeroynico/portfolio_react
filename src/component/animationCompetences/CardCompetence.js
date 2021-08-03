@@ -42,9 +42,9 @@ const skillsLogo = [
   { img: git, titre: "git - Git Hub" },
 ];
 const frameworksLogo = [
-  { img: mui, titre: "material UI" },
+  { img: mui, titre: "material-UI" },
   { img: bootstrap, titre: "bootstrap" },
-  { img: spring, titre: "react spring " },
+  { img: spring, titre: "react-spring " },
 ];
 
 const category = [
@@ -63,21 +63,42 @@ export default function CardCompetence() {
             {item.titre}
           </Typography>
           <ListItem>
-            {item.logos.map((x, index) => (
-              <span key={index} className="center">
-                <Chip
-                  avatar={<Avatar alt={x.img} src={x.img} />}
-                  label={x.titre}
-                  variant="outlined"
-                  sx={{
-                    color: "white",
-                    background: "rgba(255,255,255,0.3)",
-                    height: 35,
-                    fontSize: "1.2em",
-                  }}
-                />
-              </span>
-            ))}
+            {item.logos
+              .map((x, index) => (
+                <span key={index} className="center">
+                  <Chip
+                    avatar={<Avatar alt={x.img} src={x.img} />}
+                    label={x.titre}
+                    variant="outlined"
+                    sx={{
+                      color: "white",
+                      background: "rgba(255,255,255,0.3)",
+                      height: 35,
+                      fontSize: "1.2em",
+                    }}
+                  />
+                </span>
+              ))
+              .slice(0, 2)}
+          </ListItem>
+          <ListItem>
+            {item.logos
+              .map((x, index) => (
+                <span key={index} className="center">
+                  <Chip
+                    avatar={<Avatar alt={x.img} src={x.img} />}
+                    label={x.titre}
+                    variant="outlined"
+                    sx={{
+                      color: "white",
+                      background: "rgba(255,255,255,0.3)",
+                      height: 35,
+                      fontSize: "1.2em",
+                    }}
+                  />
+                </span>
+              ))
+              .slice(2, item.logos.length)}
           </ListItem>
           <Divider sx={{ borderColor: "white" }} />
         </div>

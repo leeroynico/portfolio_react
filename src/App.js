@@ -1,28 +1,32 @@
 import React, { useState } from "react";
-import background from "./images/background.jpg";
 import Profil from "./component/profil/Profil";
 import Speedial from "./component/Speedial";
 import Competences from "./component/animationCompetences/Competences";
 import DragProjets from "./component/projets/DragProjets";
 import { useSpring, animated } from "react-spring";
-import Grid from "@material-ui/core/Grid";
+import { Grid, Box } from "@material-ui/core";
+import { positions } from "@material-ui/system";
 import "./App.css";
-import { Typography } from "@material-ui/core";
-import allProjets from "./component/projets/AllProjets";
 
 function App() {
   return (
     <div className="app">
-      <Profil />
-
-      <div className="border">
-        <Typography align="center" variant="h3" sx={{ fontFamily: "Teko" }}>
-          Mes Projets
-        </Typography>
-        <DragProjets />
-      </div>
-      <Competences />
-      <Speedial />
+      <Grid container spacing={2}>
+        <Grid item xs={0} md={3}></Grid>
+        <Grid item xs={12} md={6}>
+          <Profil />
+        </Grid>
+        <Grid item xs={0} md={3}></Grid>
+        <Grid item xs={12} md={5}>
+          <Box className="border">
+            <DragProjets />
+          </Box>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Competences />
+        </Grid>
+        <Speedial />
+      </Grid>
     </div>
   );
 }

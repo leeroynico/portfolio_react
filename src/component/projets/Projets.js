@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   Card,
   CardActions,
@@ -9,28 +9,38 @@ import {
   CardHeader,
   IconButton,
 } from "@material-ui/core";
+import { useSpring, animated } from "@react-spring/web";
 import ControlPointIcon from "@material-ui/icons/ControlPoint";
 import "./projetStyle.css";
 import DialogProjetsInfos from "./DialogProjetInfos";
+import { useGesture, useDrag } from "react-use-gesture";
 
 export default function Projets(props) {
+  const refPosition = useRef();
+  const [positionX, setPositionX] = useState(0);
+
   const [windowSize, setWindowSize] = useState({
     width: undefined,
-    height: undefined,
   });
-  const [scaleGo, setScaleGo] = useState(1);
+  const setPos = useCallback(() => {
+    setPositionX(refPosition.current.getBoundingClientRect().x);
+  }, []);
 
   useEffect(() => {
-    function handleResize() {
+    const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
-        height: window.innerHeight,
       });
-    }
+    };
+    window.addEventListener("mousemove", setPos);
     window.addEventListener("resize", handleResize);
     handleResize();
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", setPos);
+    };
   }, []);
+
   const [activeDialog, setActiveDialog] = useState(false);
   return (
     <>
@@ -39,19 +49,32 @@ export default function Projets(props) {
         setActive={setActiveDialog}
         content={props.content}
       />
+
       <Card
-        onClick={() => setScaleGo(2)}
+        ref={refPosition}
         className="cardContainer"
         sx={{
           border: "1px solid rgba(255, 255, 255, 0.125)",
-          maxWidth: windowSize.width < 600 ? 160 : 220,
+          maxWidth: 160,
           position: "relative",
-          top:
-            windowSize.width < 600
-              ? props.content.position.y
-              : props.content.position.y + 100,
+          top: props.content.position.y,
           left: props.content.position.x,
           height: 400,
+          opacity:
+            windowSize.width < 900
+              ? 1
+              : positionX <= 380
+              ? 1
+              : positionX > 380 && positionX <= 400
+              ? 0.8
+              : positionX > 400 && positionX <= 420
+              ? 0.5
+              : positionX > 420 && positionX <= 430
+              ? 0.3
+              : positionX > 430 && positionX <= 440
+              ? 0.1
+              : 0,
+          blur: positionX <= 380 ? 1 : 20,
         }}
       >
         <CardMedia
@@ -81,6 +104,7 @@ export default function Projets(props) {
               sx={{ fontFamily: "Teko" }}
             >
               {props.content.titre} <strong> {props.content.sousTitre}</strong>
+              {windowSize.width}
             </Typography>
           }
           subheader={
