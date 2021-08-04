@@ -1,4 +1,4 @@
-.app {
+html {
   background-color: #111927;
   background-image: radial-gradient(
       at 47% 33%,
@@ -7,17 +7,10 @@
     ),
     radial-gradient(at 82% 65%, hsl(246.55, 66%, 36%) 0, transparent 55%);
   color: whitesmoke;
-
-  background-size: contain;
-}
-
-html {
-  width: 100%;
 }
 
 .border {
   border: 3px solid rgba(255, 255, 255, 0.65);
-  height: 550px;
   margin-bottom: 20%;
   margin-top: 8%;
   border-radius: 30px;

@@ -16,7 +16,6 @@ import {
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import reactLogo from "../../images/langages/react.png";
 
 export default function AlertDialog(props) {
   const handleClose = () => {
@@ -44,12 +43,11 @@ export default function AlertDialog(props) {
 
           <ListItem disablePadding>
             &nbsp;
-            {props.content.dialogContent.technos.map((item) => (
-              <>
-                <p>[</p>
-                <ListItemText primary={item} />
-                <p>]</p>&nbsp;
-              </>
+            {props.content.dialogContent.technos.map((item, i) => (
+              <span key={i}>
+                <ListItemText primary={`[${item}]`} />
+                &nbsp;
+              </span>
             ))}
             &nbsp;
           </ListItem>

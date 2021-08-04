@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import CardCompetences from "./CardCompetence";
 import CardCompetencesFront from "./CardCompetencesFront";
+import "./cardCompetenceStyle.css";
 
 export default function Competences() {
   const [windowSize, setWindowSize] = useState({
@@ -17,20 +18,19 @@ export default function Competences() {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
-    console.log(windowSize.width);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const [flipped, setFlipped] = useState(false);
   const { transform, opacity } = useSpring({
     opacity: flipped ? 1 : 0,
-    transform: `perspective(800px) rotateX(${flipped ? 180 : 0}deg)`,
+    transform: `perspective(900px) rotateX(${flipped ? 180 : 0}deg)`,
     config: { mass: 30, tension: 60, friction: 80 },
   });
 
-  const widthDiv = windowSize.width < 900 ? "95%" : "45%";
+  const widthDiv = windowSize.width < 900 ? "30%" : "45%";
   const marginLeft = windowSize.width < 900 ? 0 : "30%";
-  const marginTop = windowSize.width > 900 ? 0 : "110%";
+  const marginTop = windowSize.width > 900 ? 0 : 800;
 
   return (
     <div onClick={() => setFlipped(!flipped)} className="containerFlipp">
@@ -51,6 +51,7 @@ export default function Competences() {
         className="flippDiv"
         style={{
           transform,
+          opacity,
           rotateX: "180deg",
           width: widthDiv,
           marginLeft: marginLeft,

@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import { animated } from "@react-spring/web";
-import { useDrag } from "react-use-gesture";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useDrag, useGesture } from "react-use-gesture";
 import Projets from "./Projets";
 import allProjets from "./AllProjets";
-import { useSprings } from "react-spring";
+import { useSprings, animated } from "react-spring";
 import { Typography } from "@material-ui/core";
 
-function Drag() {
+export default function DragProjets() {
   useEffect(() => {
     const preventDefault = (e) => e.preventDefault();
     document.addEventListener("gesturestart", preventDefault);
@@ -22,7 +21,7 @@ function Drag() {
   }));
 
   const bindCard = useDrag((params) => {
-    let x = params.offset[0];
+    const x = params.offset[0];
     api.start(() => {
       return {
         x,
@@ -31,7 +30,21 @@ function Drag() {
   });
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "500px" }}>
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "500px",
+        zIndex: 2,
+      }}
+    >
+      <Typography
+        align="center"
+        variant="h3"
+        sx={{ fontFamily: "Teko", marginBottom: -4 }}
+      >
+        Mes Projets
+      </Typography>
       {springs.map(({ x }, i) => (
         <animated.div
           {...bindCard()}
@@ -47,22 +60,22 @@ function Drag() {
   );
 }
 
-export default function DragProjets() {
-  return (
-    <>
-      <Typography
-        align="center"
-        variant="h3"
-        sx={{ fontFamily: "Teko", marginBottom: -4 }}
-      >
-        Mes Projets
-      </Typography>
-      <Drag />
-      {/* {allProjets.map((item, i) => (
-        <div>
-          <Drag key={i} projet={<Projets content={item} />} />
-        </div>
-      ))} */}
-    </>
-  );
-}
+// export default function DragProjets() {
+//   return (
+//     <>
+//       <Typography
+//         align="center"
+//         variant="h3"
+//         sx={{ fontFamily: "Teko", marginBottom: -4 }}
+//       >
+//         Mes Projets
+//       </Typography>
+//       <Drag />
+//       {/* {allProjets.map((item, i) => (
+//         <div>
+//           <Drag key={i} projet={<Projets content={item} />} />
+//         </div>
+//       ))} */}
+//     </>
+//   );
+// }

@@ -40,7 +40,7 @@ export default function Projets(props) {
       window.removeEventListener("mousemove", setPos);
     };
   }, []);
-
+  const startHide = windowSize.width / 3.2;
   const [activeDialog, setActiveDialog] = useState(false);
   return (
     <>
@@ -58,20 +58,20 @@ export default function Projets(props) {
           maxWidth: 160,
           position: "relative",
           top: props.content.position.y,
-          left: props.content.position.x,
+          left: props.content.position.x - 10,
           height: 400,
           opacity:
             windowSize.width < 900
               ? 1
-              : positionX <= 380
+              : positionX <= startHide
               ? 1
-              : positionX > 380 && positionX <= 400
+              : positionX > startHide && positionX <= startHide + 20
               ? 0.8
-              : positionX > 400 && positionX <= 420
+              : positionX > startHide + 20 && positionX <= startHide + 40
               ? 0.5
-              : positionX > 420 && positionX <= 430
+              : positionX > startHide + 40 && positionX <= startHide + 50
               ? 0.3
-              : positionX > 430 && positionX <= 440
+              : positionX > startHide + 50 && positionX <= startHide + 60
               ? 0.1
               : 0,
           blur: positionX <= 380 ? 1 : 20,
@@ -104,7 +104,6 @@ export default function Projets(props) {
               sx={{ fontFamily: "Teko" }}
             >
               {props.content.titre} <strong> {props.content.sousTitre}</strong>
-              {windowSize.width}
             </Typography>
           }
           subheader={

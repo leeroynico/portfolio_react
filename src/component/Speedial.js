@@ -7,13 +7,9 @@ import {
   SpeedDialAction,
   Avatar,
 } from "@material-ui/core";
-import FileCopyIcon from "@material-ui/icons/FileCopyOutlined";
 import ContactMailIcon from "@material-ui/icons/ContactMail";
-import PrintIcon from "@material-ui/icons/Print";
-import ShareIcon from "@material-ui/icons/Share";
 import PhoneIcon from "@material-ui/icons/Phone";
 import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
-import DownloadIcon from "@material-ui/icons/Download";
 import Dialog from "./alert/Dialog";
 import cv from "../images/CV_Nicolas_leroy.pdf";
 
