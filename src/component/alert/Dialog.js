@@ -24,12 +24,26 @@ export default function AlertDialog(props) {
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Appellez le 06 17 52 84 97 ?
+            {props.fonctionToExecute === "phone"
+              ? " Appellez le 06 17 52 84 97 ?"
+              : props.fonctionToExecute === "mail"
+              ? " envoyez un mail à nicoleroydev@gmail.com"
+              : ""}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Nope</Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button
+            onClick={() => {
+              handleClose();
+              if (props.fonctionToExecute === "phone") {
+                window.open("tel:+33617528497");
+              } else if (props.fonctionToExecute === "mail") {
+                window.open("mailto:nicoleroydev@gmail.com");
+              }
+            }}
+            autoFocus
+          >
             OK
           </Button>
         </DialogActions>

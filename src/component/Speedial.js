@@ -15,10 +15,15 @@ import cv from "../images/CV_Nicolas_leroy.pdf";
 
 export default function BasicSpeedDial() {
   const [active, setActive] = useState(false);
+  const [fonctionToExecute, setFonctionToExecute] = useState(null);
 
   return (
     <>
-      <Dialog active={active} setActive={setActive} />
+      <Dialog
+        active={active}
+        setActive={setActive}
+        fonctionToExecute={fonctionToExecute}
+      />
       <Box>
         <SpeedDial
           sx={{
@@ -32,15 +37,18 @@ export default function BasicSpeedDial() {
           <SpeedDialAction
             icon={<PhoneIcon />}
             tooltipTitle="06 17 52 84 97"
-            //onClick={() => window.open("tel:+33617528497")}
+            onClick={() => {
+              setActive(true);
+              setFonctionToExecute("phone");
+            }}
           />
           <SpeedDialAction
             icon={<AlternateEmailIcon />}
             tooltipTitle="nicoleroydev@gmail.com"
-            onClick={() =>
-              // window.open("mailto:nicoleroydev@gmail.com")
-              setActive(true)
-            }
+            onClick={() => {
+              setActive(true);
+              setFonctionToExecute("mail");
+            }}
           />
 
           <SpeedDialAction
