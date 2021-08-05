@@ -2,6 +2,8 @@ import appImg from "../../images/projets/monapp.png";
 import eshopImg from "../../images/projets/eshopprojet.png";
 import speculosImg from "../../images/projets/lesspeculosprojet.png";
 import bclImg from "../../images/projets/bcl.png";
+import PortfolioImg from "../../images/projets/portfolio.png";
+import DiceGameImg from "../../images/projets/dicegame.png";
 
 const allProjets = [
   {
@@ -12,7 +14,6 @@ const allProjets = [
     texte:
       "  Application mobile pour aider les compétiteurs de badminton à s'entrainer seul",
     img: appImg,
-    position: { x: -50, y: 40 },
     dialogContent: {
       technos: ["react native", "expo", "react native paper", "expo Speech"],
       url: "",
@@ -27,7 +28,6 @@ const allProjets = [
     definition: "site statique [Bootstrap]",
     texte: " Site vitrine pour une Cie de théâtre locale (ou pas)",
     img: speculosImg,
-    position: { x: 150, y: 40 },
     dialogContent: {
       technos: ["html", "css", "bootstrap"],
       url: "https://leeroynico.github.io/lesspeculos/",
@@ -42,7 +42,6 @@ const allProjets = [
     texte:
       " Voila un 'fake' site e-commerce réalisé lors de mon stage chez diggit-all.",
     img: eshopImg,
-    position: { x: 350, y: -760 },
     dialogContent: {
       technos: ["Word Press", "Woo commerce", "Divi"],
       url: "https://click-and-collect-5.diggit-all.fr/",
@@ -57,13 +56,41 @@ const allProjets = [
     texte:
       "gestion et stockage des résultats de badminton, invitation pour les matchs.",
     img: bclImg,
-    position: { x: 550, y: -1160 },
     dialogContent: {
       technos: ["php", "autoloader", "phpmailer", "boostrap"],
       url: "https://desolate-hamlet-21501.herokuapp.com/",
       texte:
         "contactez moi pour avoir un accès 'guest' pour vous connecter au site.",
       github: "",
+    },
+  },
+  {
+    id: 5,
+    titre: "#5projet",
+    sousTitre: "portfolio",
+    definition: "site dynamique [REACT.JS - responsive] ",
+    texte: "portfolio de moi même visité par vous même en ce moment même",
+    img: PortfolioImg,
+    dialogContent: {
+      technos: ["react.js", "use Gesture", "spring react web", "material ui"],
+      url: "https://leeroynico.github.io/dice_game/",
+      texte: "",
+      github: "https://github.com/leeroynico/dice_game",
+    },
+  },
+  {
+    id: 5,
+    titre: "#5projet",
+    sousTitre: "jeu de dés",
+    definition: "jeu - évaluation [JAVASCRIPT - responsive] ",
+    texte:
+      "petit jeu de dés effectués dans le cadre d'une évaluation lors de l'apprentissage de javascript vanilla",
+    img: DiceGameImg,
+    dialogContent: {
+      technos: ["javascript", "ionic"],
+      url: "https://leeroynico.github.io/dice_game/",
+      texte: "",
+      github: "https://github.com/leeroynico/dice_game",
     },
   },
 ];
