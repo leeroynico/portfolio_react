@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
-import { useDrag, useGesture } from "react-use-gesture";
+import React, { useEffect } from "react";
+import { useDrag } from "react-use-gesture";
 import Projets from "./Projets";
 import allProjets from "./AllProjets";
 import { useSprings, animated } from "react-spring";
@@ -19,14 +19,6 @@ export default function DragProjets() {
   const [springs, api] = useSprings(allProjets.length, () => ({
     x: 0,
   }));
-
-  // const bindCard = useDrag(
-  //   ({ down, movement: [x], args: [index] }) =>
-  //     api.start((i) => i === index && { x: down ? x : 0 }),
-  //   {
-  //     axis: "x",
-  //   }
-  // );
 
   const bindCard = useDrag((params) => {
     const x = params.offset[0];

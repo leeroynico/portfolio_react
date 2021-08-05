@@ -1,17 +1,10 @@
 import * as React from "react";
-import { useState } from "react";
 import {
   Box,
-  Button,
-  Divider,
   Dialog,
   DialogActions,
-  DialogContent,
-  DialogContentText,
   ListItem,
   ListItemText,
-  Chip,
-  Avatar,
   Typography,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";

@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { Card, Typography, CardContent } from "@material-ui/core";
 import "./aboutMeStyle.css";
 
@@ -7,20 +6,6 @@ function AboutMe() {
   const link =
     "https://www.youtube.com/watch?v=SzodL7GIv44&ab_channel=LesSp%C3%A9culos";
   const linkStudy = "https://www.digital-campus.live/";
-  const [windowSize, setWindowSize] = useState({
-    width: undefined,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-      });
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <>

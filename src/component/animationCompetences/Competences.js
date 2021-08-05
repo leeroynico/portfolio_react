@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import CardCompetences from "./CardCompetence";
 import CardCompetencesFront from "./CardCompetencesFront";

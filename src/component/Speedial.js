@@ -1,12 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import Box from "@material-ui/core/Box";
-import {
-  SpeedDial,
-  SpeedDialIcon,
-  SpeedDialAction,
-  Avatar,
-} from "@material-ui/core";
+import { SpeedDial, SpeedDialAction, Avatar } from "@material-ui/core";
 import ContactMailIcon from "@material-ui/icons/ContactMail";
 import PhoneIcon from "@material-ui/icons/Phone";
 import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";

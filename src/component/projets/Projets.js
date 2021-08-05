@@ -2,18 +2,15 @@ import * as React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import {
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Typography,
   CardHeader,
   IconButton,
 } from "@material-ui/core";
-import { useSpring, animated } from "@react-spring/web";
 import ControlPointIcon from "@material-ui/icons/ControlPoint";
 import "./projetStyle.css";
 import DialogProjetsInfos from "./DialogProjetInfos";
-import { useGesture, useDrag } from "react-use-gesture";
 
 export default function Projets(props) {
   const refPosition = useRef();
@@ -55,11 +52,8 @@ export default function Projets(props) {
         ref={refPosition}
         className="cardContainer"
         style={{
-          // position: "absolute",
           width: 160,
           height: 500,
-          // left: props.content.position.x,
-          // top: 0,
           opacity:
             windowSize.width < 900
               ? 1

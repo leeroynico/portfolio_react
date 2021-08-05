@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import {
   Button,
   Dialog,
@@ -7,7 +6,6 @@ import {
   DialogContent,
   DialogContentText,
 } from "@material-ui/core";
-import DialogTitle from "@material-ui/core/DialogTitle";
 
 export default function AlertDialog(props) {
   const handleClose = () => {
