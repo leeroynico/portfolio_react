@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSpring, animated } from "@react-spring/web";
 import Profil from "./component/profil/Profil";
 import Speedial from "./component/Speedial";
 import Competences from "./component/animationCompetences/Competences";
 import DragProjets from "./component/projets/DragProjets";
-import { Grid, Box } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import AboutMe from "./component/aboutMe/AboutMe";
+import SwitchDarkMode from "./component/SwitchDarkMode";
 import "./App.css";
 
 function App() {
@@ -22,32 +24,68 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const [darkMode, setDarkMode] = useState(false);
+  const activeDarkMode = () => setDarkMode(!darkMode);
+
+  const { x } = useSpring({
+    from: { x: 0 },
+    x: darkMode ? 1 : 0,
+    config: { duration: 1200 },
+  });
+
   return (
-    <div className="app">
-      <Grid container spacing={1} justifyContent="space-around">
-        <Grid item xs={1} md={3}></Grid>
-        <Grid item xs={12} md={6}>
-          <Profil />
+    <>
+      <animated.div
+        style={{
+          backgroundColor: x.to({
+            range: [0, 1],
+            output: ["#111927", "#50e3c2"],
+          }),
+          backgroundImage: x.to({
+            range: [0, 1],
+            output: [
+              `radial-gradient(at 47% 33%, #0079B3, transparent 59%),
+               radial-gradient(at 82% 65%, #2C1F98, transparent 55%)`,
+              `radial-gradient(at 47% 33%, #00b2fe, transparent 59%),
+               radial-gradient(at 82% 65%, #17b486, transparent 55%)`,
+            ],
+          }),
+        }}
+      >
+        <Grid container spacing={1} justifyContent="space-around">
+          <Grid item xs={1} md={3}></Grid>
+          <Grid item xs={10} md={6}>
+            <Profil />
+          </Grid>
+          <Grid item xs={1} md={3} container justifyContent="flex-end">
+            <SwitchDarkMode setDarkMode={activeDarkMode} />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={5}
+            className={windowSize.width < 900 ? "mobile" : "border"}
+            sx={{ marginTop: "1%" }}
+          >
+            <DragProjets />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={5}
+            sx={{
+              margin: windowSize.width < 900 ? 10 : 0,
+            }}
+          >
+            <Competences />
+          </Grid>
+          <Grid item xs={12}>
+            <AboutMe />
+          </Grid>
+          <Speedial />
         </Grid>
-        <Grid item xs={1} md={3}></Grid>
-        <Grid
-          item
-          xs={12}
-          md={5}
-          className={windowSize.width < 900 ? "mobile" : "border"}
-          sx={{ marginTop: "1%" }}
-        >
-          <DragProjets />
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <Competences />
-        </Grid>
-        <Grid item xs={12}>
-          <AboutMe />
-        </Grid>
-        <Speedial />
-      </Grid>
-    </div>
+      </animated.div>
+    </>
   );
 }
 export default App;

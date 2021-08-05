@@ -26,6 +26,7 @@ function Profil() {
             height: 80,
           }}
         />
+
         <Typography
           sx={{ fontFamily: "Teko" }}
           align="center"

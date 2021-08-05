@@ -20,8 +20,17 @@ export default function DragProjets() {
     x: 0,
   }));
 
+  // const bindCard = useDrag(
+  //   ({ down, movement: [x], args: [index] }) =>
+  //     api.start((i) => i === index && { x: down ? x : 0 }),
+  //   {
+  //     axis: "x",
+  //   }
+  // );
+
   const bindCard = useDrag((params) => {
     const x = params.offset[0];
+
     api.start(() => {
       return {
         x,
@@ -32,7 +41,7 @@ export default function DragProjets() {
   return (
     <>
       <Typography align="center" variant="h3" sx={{ fontFamily: "Teko" }}>
-        Mes Projets
+        Mes 'sides' Projets
       </Typography>
 
       <div
@@ -44,12 +53,12 @@ export default function DragProjets() {
       >
         {springs.map(({ x }, i) => (
           <animated.div
-            draggable="false"
             {...bindCard()}
             key={i}
             style={{
               x,
               marginLeft: "10%",
+              touchAction: "pan-x",
             }}
           >
             <Projets content={allProjets[i]} />

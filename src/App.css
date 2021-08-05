@@ -1,11 +1,4 @@
 html {
-  background-color: #111927;
-  background-image: radial-gradient(
-      at 47% 33%,
-      hsl(199.23, 100%, 35%) 0,
-      transparent 59%
-    ),
-    radial-gradient(at 82% 65%, hsl(246.55, 66%, 36%) 0, transparent 55%);
   color: whitesmoke;
 }
 
