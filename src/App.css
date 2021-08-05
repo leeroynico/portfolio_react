@@ -11,25 +11,11 @@ html {
 
 .border {
   border: 3px solid rgba(255, 255, 255, 0.65);
-  margin-bottom: 20%;
-  margin-top: 8%;
   border-radius: 30px;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-right: 25%;
+  height: 610px;
 }
 
-/* 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.mobile {
+  overflow-x: hidden;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

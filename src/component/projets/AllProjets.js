@@ -27,7 +27,7 @@ const allProjets = [
     definition: "site statique [Bootstrap]",
     texte: " Site vitrine pour une Cie de théâtre locale (ou pas)",
     img: speculosImg,
-    position: { x: 150, y: -360 },
+    position: { x: 150, y: 40 },
     dialogContent: {
       technos: ["html", "css", "bootstrap"],
       url: "https://leeroynico.github.io/lesspeculos/",

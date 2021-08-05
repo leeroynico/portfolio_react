@@ -21,11 +21,10 @@ function AboutMe() {
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const marginTop = windowSize.width > 900 ? 0 : 800;
 
   return (
     <>
-      <Card id="profilCard" style={{ marginTop: marginTop }}>
+      <Card id="profilCard">
         <CardContent>
           <Typography
             sx={{ fontFamily: "Teko" }}

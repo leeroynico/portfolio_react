@@ -71,7 +71,6 @@ function Profil() {
         >
           <Avatar alt="reseaux2" variant="rounded" src={linkedin} />
         </a>
-        {/* <Button size="small">Learn More</Button> */}
       </CardActions>
     </Card>
   );

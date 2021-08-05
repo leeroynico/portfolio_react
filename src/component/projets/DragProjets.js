@@ -30,52 +30,32 @@ export default function DragProjets() {
   });
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "500px",
-        zIndex: 2,
-      }}
-    >
-      <Typography
-        align="center"
-        variant="h3"
-        sx={{ fontFamily: "Teko", marginBottom: -4 }}
-      >
+    <>
+      <Typography align="center" variant="h3" sx={{ fontFamily: "Teko" }}>
         Mes Projets
       </Typography>
-      {springs.map(({ x }, i) => (
-        <animated.div
-          {...bindCard()}
-          key={i}
-          style={{
-            x,
-          }}
-        >
-          <Projets content={allProjets[i]} />
-        </animated.div>
-      ))}
-    </div>
+
+      <div
+        style={{
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        {springs.map(({ x }, i) => (
+          <animated.div
+            draggable="false"
+            {...bindCard()}
+            key={i}
+            style={{
+              x,
+              marginLeft: "10%",
+            }}
+          >
+            <Projets content={allProjets[i]} />
+          </animated.div>
+        ))}
+      </div>
+    </>
   );
 }
-
-// export default function DragProjets() {
-//   return (
-//     <>
-//       <Typography
-//         align="center"
-//         variant="h3"
-//         sx={{ fontFamily: "Teko", marginBottom: -4 }}
-//       >
-//         Mes Projets
-//       </Typography>
-//       <Drag />
-//       {/* {allProjets.map((item, i) => (
-//         <div>
-//           <Drag key={i} projet={<Projets content={item} />} />
-//         </div>
-//       ))} */}
-//     </>
-//   );
-// }

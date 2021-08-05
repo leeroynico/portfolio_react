@@ -42,6 +42,7 @@ export default function Projets(props) {
   }, []);
   const startHide = windowSize.width / 3.2;
   const [activeDialog, setActiveDialog] = useState(false);
+
   return (
     <>
       <DialogProjetsInfos
@@ -53,13 +54,12 @@ export default function Projets(props) {
       <Card
         ref={refPosition}
         className="cardContainer"
-        sx={{
-          border: "1px solid rgba(255, 255, 255, 0.125)",
-          maxWidth: 160,
-          position: "relative",
-          top: props.content.position.y,
-          left: props.content.position.x - 10,
-          height: 400,
+        style={{
+          // position: "absolute",
+          width: 160,
+          height: 500,
+          // left: props.content.position.x,
+          // top: 0,
           opacity:
             windowSize.width < 900
               ? 1
@@ -74,7 +74,6 @@ export default function Projets(props) {
               : positionX > startHide + 50 && positionX <= startHide + 60
               ? 0.1
               : 0,
-          blur: positionX <= 380 ? 1 : 20,
         }}
       >
         <CardMedia
