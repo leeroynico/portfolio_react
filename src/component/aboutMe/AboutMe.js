@@ -28,11 +28,10 @@ function AboutMe() {
             paragraph
           >
             Après plus de quinze ans à travailler comme technicien dans le
-            spectacle vivant, j'ai décidé de devenir{" "}
-            <bold>développeur WEB</bold>. Par volonté de monter en compétences,
-            mais aussi parce que j'aime apprendre et résoudre les problèmes,
-            j'ai suivi une formation qualifiante en e-learning de développeur
-            web Full Stack avec l'école{" "}
+            spectacle vivant, j'ai décidé de devenir développeur WEB Par volonté
+            de monter en compétences, mais aussi parce que j'aime apprendre et
+            résoudre les problèmes, j'ai suivi une formation qualifiante en
+            e-learning de développeur web Full Stack avec l'école{" "}
             <a href={linkStudy} target="blank" style={{ color: "white" }}>
               Digital Campus Live.
             </a>

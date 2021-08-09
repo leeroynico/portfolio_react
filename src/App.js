@@ -54,11 +54,13 @@ function App() {
       >
         <Grid container spacing={1} justifyContent="space-around">
           <Grid item xs={1} md={3}></Grid>
-          <Grid item xs={10} md={6}>
+          <Grid item xs={9} md={6}>
             <Profil />
           </Grid>
           <Grid item xs={1} md={3} container justifyContent="flex-end">
-            <SwitchDarkMode setDarkMode={activeDarkMode} />
+            <Grid item>
+              <SwitchDarkMode setDarkMode={activeDarkMode} />
+            </Grid>
           </Grid>
           <Grid
             item
