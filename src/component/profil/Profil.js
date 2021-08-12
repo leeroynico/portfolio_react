@@ -60,7 +60,7 @@ function Profil() {
           variant="h5"
           component="div"
         >
-          [REACT]
+          [REACT] {"< "} Lens || Lille{" >"}
         </Typography>
       </CardContent>
       <CardActions>

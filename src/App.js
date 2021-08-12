@@ -7,6 +7,7 @@ import DragProjets from "./component/projets/DragProjets";
 import { Grid } from "@material-ui/core";
 import AboutMe from "./component/aboutMe/AboutMe";
 import SwitchDarkMode from "./component/SwitchDarkMode";
+import ContactMe from "./component/sendMail/ContactMe";
 import "./App.css";
 
 function App() {
@@ -83,6 +84,9 @@ function App() {
           </Grid>
           <Grid item xs={12}>
             <AboutMe />
+          </Grid>
+          <Grid item xs={12}>
+            <ContactMe />
           </Grid>
           <Speedial />
         </Grid>
