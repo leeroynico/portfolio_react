@@ -12,7 +12,7 @@ const allProjets = [
     sousTitre: "Mon Coach",
     definition: "App Mobile [React Native]",
     texte:
-      "  Application mobile pour aider les compétiteurs de badminton à s'entrainer seul",
+      "  Application mobile pour aider les compétiteurs de badminton à s'entrainer seuls",
     img: appImg,
     dialogContent: {
       technos: ["react native", "expo", "react native paper", "expo Speech"],
@@ -54,7 +54,7 @@ const allProjets = [
     sousTitre: "Championnat BCL ",
     definition: "app interne [PHP - SQL]",
     texte:
-      "gestion et stockage des résultats de badminton, invitation pour les matchs.",
+      "Gestion et stockage des résultats des compétiteurs de badminton, invitations pour les matchs.",
     img: bclImg,
     dialogContent: {
       technos: ["php", "autoloader", "phpmailer", "boostrap"],
