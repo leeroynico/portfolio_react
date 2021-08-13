@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Alert,
   Card,
@@ -13,12 +13,8 @@ import {
   IconButton,
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import { init } from "emailjs-com";
-import emailjs from "emailjs-com";
+import { SendMail } from "./SendMail";
 import "../profil/profilStyle.css";
-import { useState } from "react";
-import PropTypes from "prop-types";
-init("user_yiS7hGl9OqRBKzBjAN8MQ");
 
 function ContactMe() {
   const [nom, setNom] = useState("");
@@ -27,6 +23,7 @@ function ContactMe() {
   const [messageOptions, setMessageOptions] = useState("");
   const [messageWrite, setMessageWrite] = useState("");
   const [alert, setAlert] = useState(false);
+  const [alertSucces, setAlertSucces] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
 
   const handleClose = (event, reason) => {
@@ -36,17 +33,36 @@ function ContactMe() {
     setAlert(false);
   };
 
+  const handleCloseSucces = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAlertSucces(false);
+  };
+
+  const [emailSend, setEmailSend] = useState(false);
+  const checkEmailSend = () => setEmailSend(true);
   const sendMail = () => {
     if (nom === "" || prenom === "" || mail === "") {
-      setMessageAlert("Veuillez ne pas laisser de champs vides SVP");
+      setMessageAlert(
+        "Veuillez remplir au moins votre nom, prénom et votre mail et/ou téléphonne"
+      );
       setAlert(true);
+    } else {
+      SendMail(prenom, nom, mail, messageWrite, messageOptions);
+      setAlertSucces(true);
+      setPrenom("");
+      setNom("");
+      setMail("");
     }
   };
 
-  const TextFieldGenerator = (label, setInputState) => {
+  const TextFieldGenerator = (label, setInputState, value) => {
     return (
       <>
         <TextField
+          value={value || ""}
+          id={`id${label}`}
           fullWidth
           label={label}
           sx={{
@@ -74,7 +90,7 @@ function ContactMe() {
             const regex = /[*+<>|[\]\\]/g;
             let inputValue = event.target.value;
             let inputValueRegex = inputValue.replace(regex, "_");
-            if (inputValue != inputValueRegex) {
+            if (inputValue !== inputValueRegex) {
               setAlert(true);
               setMessageAlert(
                 "Les caractères :  * + < >  ne sont pas autorisés."
@@ -129,6 +145,35 @@ function ContactMe() {
           {messageAlert}
         </Alert>
       </Snackbar>
+      <Snackbar
+        open={alertSucces}
+        autoHideDuration={2500}
+        onClose={handleCloseSucces}
+      >
+        <Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setAlertSucces(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          severity="success"
+          sx={{
+            backgroundColor: "green",
+            color: "white",
+            marginBottom: "50%",
+            width: "80%",
+          }}
+        >
+          votre message a bien été envoyé
+        </Alert>
+      </Snackbar>
       <Card id="profilCard">
         <CardContent>
           <Typography
@@ -151,13 +196,13 @@ function ContactMe() {
 
           <Grid container spacing={1}>
             <Grid item xs={6}>
-              {TextFieldGenerator("prénom", setPrenom)}
+              {TextFieldGenerator("prénom", setPrenom, prenom)}
             </Grid>
             <Grid item xs={6}>
-              {TextFieldGenerator("nom", setNom)}
+              {TextFieldGenerator("nom", setNom, nom)}
             </Grid>
             <Grid item xs={12} sx={{ marginBottom: 1 }}>
-              {TextFieldGenerator("mail ou téléphonne", setMail)}
+              {TextFieldGenerator("mail ou téléphonne", setMail, mail)}
             </Grid>
           </Grid>
           <Autocomplete
@@ -220,7 +265,7 @@ function ContactMe() {
                   const regex = /[*+<>|[\]\\]/g;
                   let inputValue = event.target.value;
                   let inputValueRegex = inputValue.replace(regex, "_");
-                  if (inputValue != inputValueRegex) {
+                  if (inputValue !== inputValueRegex) {
                     setAlert(true);
                     setMessageAlert(
                       "Les caractères :  * + < >  ne sont pas autorisés."
@@ -239,7 +284,7 @@ function ContactMe() {
             type="submit"
             onClick={() => sendMail()}
           >
-            Valider
+            Envoyer
           </Button>
         </CardContent>
       </Card>
