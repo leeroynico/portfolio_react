@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { SendMail } from "./SendMail";
+import ReCAPTCHA from "react-google-recaptcha";
 import "../profil/profilStyle.css";
 
 function ContactMe() {
@@ -25,6 +26,7 @@ function ContactMe() {
   const [alert, setAlert] = useState(false);
   const [alertSucces, setAlertSucces] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
+  const [reCaptcha, setReCaptcha] = useState(false);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -47,6 +49,9 @@ function ContactMe() {
       setMessageAlert(
         "Veuillez remplir au moins votre nom, prénom et votre mail et/ou téléphonne"
       );
+      setAlert(true);
+    } else if (!reCaptcha) {
+      setMessageAlert("Veuillez cliquer sur 'Je ne suis pas un robot' ");
       setAlert(true);
     } else {
       SendMail(prenom, nom, mail, messageWrite, messageOptions);
@@ -193,7 +198,6 @@ function ContactMe() {
             Vous pouvez vous inspirer des messages pré-définis ou laissez voguer
             votre imagination !
           </Typography>
-
           <Grid container spacing={1}>
             <Grid item xs={6}>
               {TextFieldGenerator("prénom", setPrenom, prenom)}
@@ -204,88 +208,100 @@ function ContactMe() {
             <Grid item xs={12} sx={{ marginBottom: 1 }}>
               {TextFieldGenerator("mail ou téléphonne", setMail, mail)}
             </Grid>
-          </Grid>
-          <Autocomplete
-            onChange={(event) => {
-              setMessageOptions(event.target.textContent);
-            }}
-            freeSolo
-            selectOnFocus
-            clearOnBlur
-            handleHomeEndKeys
-            noOptionsText=""
-            multiple
-            getOptionDisabled={(option) => option === exemplesSentences[2]}
-            sx={{
-              ".MuiAutocomplete-noOptions": {
-                color: "white, ",
-              },
-              ".MuiAutocomplete-popupIndicator, .MuiAutocomplete-tag ": {
-                color: "white",
-              },
-              ".MuiAutocomplete-inputFocused": {
-                color: "white",
-              },
-              "& .MuiFormLabel-root": {
-                color: "white",
-                fontFamily: "Teko",
-                fontSize: "1.6rem",
-              },
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  borderColor: "#0079B3",
-                },
-                "&:hover fieldset": {
-                  borderColor: "#2C1F98",
-                },
-                "&.Mui-focused fieldset": {
-                  borderColor: "#00b2fe",
-                },
-              },
-            }}
-            PaperComponent={({ children }) => (
-              <Paper
-                elevation={10}
-                style={{
-                  backdropFilter: "blur(15px) saturate(20%)",
-                  WebkitBackdropFilter: "blur(15px) saturate(20%)",
-                  backgroundColor: "rgba(17, 25, 40, 0.84)",
-                  color: "white",
-                  marginBottom: 15,
-                }}
-              >
-                {children}
-              </Paper>
-            )}
-            options={exemplesSentences}
-            renderInput={(params) => (
-              <TextField
-                {...params}
+            <Grid item xs={12}>
+              <Autocomplete
                 onChange={(event) => {
-                  const regex = /[*+<>|[\]\\]/g;
-                  let inputValue = event.target.value;
-                  let inputValueRegex = inputValue.replace(regex, "_");
-                  if (inputValue !== inputValueRegex) {
-                    setAlert(true);
-                    setMessageAlert(
-                      "Les caractères :  * + < >  ne sont pas autorisés."
-                    );
-                    event.target.value = "";
-                  }
-                  setMessageWrite(inputValueRegex);
+                  setMessageOptions(event.target.textContent);
                 }}
-                label="message"
+                freeSolo
+                selectOnFocus
+                clearOnBlur
+                handleHomeEndKeys
+                noOptionsText=""
+                multiple
+                getOptionDisabled={(option) => option === exemplesSentences[2]}
+                sx={{
+                  marginBottom: 2,
+                  ".MuiAutocomplete-noOptions": {
+                    color: "white, ",
+                  },
+                  ".MuiAutocomplete-popupIndicator, .MuiAutocomplete-tag ": {
+                    color: "white",
+                  },
+                  ".MuiAutocomplete-inputFocused": {
+                    color: "white",
+                  },
+                  "& .MuiFormLabel-root": {
+                    color: "white",
+                    fontFamily: "Teko",
+                    fontSize: "1.6rem",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#0079B3",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#2C1F98",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#00b2fe",
+                    },
+                  },
+                }}
+                PaperComponent={({ children }) => (
+                  <Paper
+                    elevation={10}
+                    style={{
+                      backdropFilter: "blur(15px) saturate(20%)",
+                      WebkitBackdropFilter: "blur(15px) saturate(20%)",
+                      backgroundColor: "rgba(17, 25, 40, 0.84)",
+                      color: "white",
+                      marginBottom: 15,
+                    }}
+                  >
+                    {children}
+                  </Paper>
+                )}
+                options={exemplesSentences}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    onChange={(event) => {
+                      const regex = /[*+<>|[\]\\]/g;
+                      let inputValue = event.target.value;
+                      let inputValueRegex = inputValue.replace(regex, "_");
+                      if (inputValue !== inputValueRegex) {
+                        setAlert(true);
+                        setMessageAlert(
+                          "Les caractères :  * + < >  ne sont pas autorisés."
+                        );
+                        event.target.value = "";
+                      }
+                      setMessageWrite(inputValueRegex);
+                    }}
+                    label="message"
+                  />
+                )}
               />
-            )}
-          />
-          <Button
-            variant="contained"
-            sx={{ marginTop: 2 }}
-            type="submit"
-            onClick={() => sendMail()}
-          >
-            Envoyer
-          </Button>
+            </Grid>
+            <Grid item xs={10} md={6}>
+              <ReCAPTCHA
+                theme="dark"
+                sitekey="6LdNBvsbAAAAAPe1tQhZ22Q-5Xy-Ia44tJfWua3T"
+                onChange={() => setReCaptcha(true)}
+              />
+            </Grid>
+            <Grid item xs={2} md={6} sx={{ marginLeft: -5 }}>
+              <Button
+                variant="contained"
+                sx={{ marginTop: 2 }}
+                type="submit"
+                onClick={() => sendMail()}
+              >
+                Envoyer
+              </Button>
+            </Grid>
+          </Grid>
         </CardContent>
       </Card>
     </>
