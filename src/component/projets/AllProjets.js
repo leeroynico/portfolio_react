@@ -73,7 +73,7 @@ const allProjets = [
     img: PortfolioImg,
     dialogContent: {
       technos: ["react.js", "use Gesture", "spring react web", "material ui"],
-      url: "https://leeroynico.github.io/dice_game/",
+      url: "#",
       texte: "",
       github: "https://github.com/leeroynico/dice_game",
     },

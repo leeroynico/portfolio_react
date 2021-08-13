@@ -81,6 +81,20 @@ function ContactMe() {
               );
               event.target.value = "";
             }
+            const checkIfPAIsHere = [
+              "adolf",
+              "hitler",
+              "tonton",
+              "coremidi",
+              "enfant",
+            ];
+            const checkWords = (element) =>
+              element === event.target.value.toLowerCase();
+            if (checkIfPAIsHere.some(checkWords)) {
+              setMessageAlert("euh... t'es sérieux?");
+              setAlert(true);
+              event.target.value = "";
+            }
             setInputState(inputValueRegex);
           }}
         ></TextField>
