@@ -6,7 +6,7 @@ import {
   CardContent,
   Avatar,
   Chip,
-  Divider,
+  Box,
 } from "@material-ui/core";
 import profilPic from "../../images/profil.png";
 import github from "../../images/reseaux/github.png";
@@ -26,6 +26,7 @@ function Profil() {
             height: 80,
           }}
         />
+
         <Typography
           sx={{ fontFamily: "Teko" }}
           align="center"
@@ -34,26 +35,32 @@ function Profil() {
         >
           Nicolas Leroy
         </Typography>
-        <Divider>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Chip
-            align="center"
             variant="outlined"
             sx={{
               color: "white",
               background: "rgba(72, 74, 80, 0.70)",
               height: 40,
               fontSize: "1.2em",
+              marginTop: 2,
             }}
-            label="Développeur Web Polyvalent"
+            label="Développeur Web"
           />
-        </Divider>
+        </Box>
         <Typography
           sx={{ fontFamily: "Teko", marginTop: 3 }}
           align="center"
           variant="h5"
           component="div"
         >
-          Open to work
+          [REACT] {"< "} Lens || Lille{" >"}
         </Typography>
       </CardContent>
       <CardActions>
@@ -71,7 +78,6 @@ function Profil() {
         >
           <Avatar alt="reseaux2" variant="rounded" src={linkedin} />
         </a>
-        {/* <Button size="small">Learn More</Button> */}
       </CardActions>
     </Card>
   );

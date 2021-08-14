@@ -1,19 +1,13 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+} from "@material-ui/core";
 
 export default function AlertDialog(props) {
-  const [open, setOpen] = useState(props.active);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
   const handleClose = () => {
     props.setActive(false);
   };
@@ -28,12 +22,26 @@ export default function AlertDialog(props) {
       >
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Appellez le 06 17 52 84 97 ?
+            {props.fonctionToExecute === "phone"
+              ? " Appellez le 06 17 52 84 97 ?"
+              : props.fonctionToExecute === "mail"
+              ? " envoyez un mail à nicoleroydev@gmail.com"
+              : ""}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Nope</Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button
+            onClick={() => {
+              handleClose();
+              if (props.fonctionToExecute === "phone") {
+                window.open("tel:+33617528497");
+              } else if (props.fonctionToExecute === "mail") {
+                window.open("mailto:nicoleroydev@gmail.com");
+              }
+            }}
+            autoFocus
+          >
             OK
           </Button>
         </DialogActions>

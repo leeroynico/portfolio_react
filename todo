@@ -1,10 +1,16 @@
 animation css : 
-☐ animation pour afficher profil sur le blur 
-☐ trouver bonne position speedial 
+✘ animation pour afficher profil sur le blur @cancelled(21-08-10 11:25)
+✔ trouver bonne position speedial @done(21-07-19 14:43)
+✔ donner positions départs des cards projets @done(21-07-19 14:43)
+✘ gérer Z index des cartes projets @cancelled(21-08-10 11:25)
 
 features : 
-  ☐ finir les speedial boutons 
-  ☐ tableau + map pour les technos
+  ✔ finir les speedial boutons @done(21-08-08 11:24)
+  ✔ tableau + map pour les technos @done(21-07-19 14:43)
 
-  design: 
-    ☐ responsive CardCompetences.js 'front-end' chip
+design: 
+  ✔ responsive CardCompetences.js 'front-end' chip @done(21-08-10 11:25)
+
+
+mail :
+  ☐ gérer leresponse Status 

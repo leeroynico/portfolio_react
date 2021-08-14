@@ -1,107 +1,120 @@
 import * as React from "react";
-import { styled } from "@material-ui/core/styles";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   Card,
-  CardHeader,
-  CardMedia,
   CardContent,
-  CardActions,
-  Collapse,
-  Avatar,
+  CardMedia,
   Typography,
+  CardHeader,
+  IconButton,
 } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import img from "../../images/background.jpg";
+import ControlPointIcon from "@material-ui/icons/ControlPoint";
+import "./projetStyle.css";
+import DialogProjetsInfos from "./DialogProjetInfos";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+export default function Projets(props) {
+  const refPosition = useRef();
+  const [positionX, setPositionX] = useState(0);
 
-export default function Projets() {
-  const [expanded, setExpanded] = React.useState(false);
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+  });
+  const setPos = useCallback(() => {
+    setPositionX(refPosition.current.getBoundingClientRect().x);
+  }, []);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    };
+    window.addEventListener("mousemove", setPos);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", setPos);
+    };
+  }, []);
+  const startHide = windowSize.width / 3.2;
+  const [activeDialog, setActiveDialog] = useState(false);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+    <>
+      <DialogProjetsInfos
+        active={activeDialog}
+        setActive={setActiveDialog}
+        content={props.content}
       />
-      <CardMedia
-        sx={{
-          height: 0,
-          paddingTop: "56.25%", // 16:9
+
+      <Card
+        ref={refPosition}
+        className="cardContainer"
+        style={{
+          width: 160,
+          height: 500,
+          opacity:
+            windowSize.width < 900
+              ? 1
+              : positionX <= startHide
+              ? 1
+              : positionX > startHide && positionX <= startHide + 20
+              ? 0.8
+              : positionX > startHide + 20 && positionX <= startHide + 40
+              ? 0.5
+              : positionX > startHide + 40 && positionX <= startHide + 50
+              ? 0.3
+              : positionX > startHide + 50 && positionX <= startHide + 60
+              ? 0.1
+              : 0,
         }}
-        image={img}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      >
+        <CardMedia
+          component="img"
+          alt="appImg"
+          height="120"
+          image={props.content.img}
+          draggable="false"
+          title="appImg"
+        />
+        <CardHeader
+          style={{ marginBottom: -20 }}
+          action={
+            <IconButton
+              starticon={<ControlPointIcon />}
+              sx={{ color: "#007bb5", marginTop: 1.5 }}
+              size="large"
+              onClick={() => setActiveDialog(true)}
+            >
+              <ControlPointIcon />
+            </IconButton>
+          }
+          title={
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ fontFamily: "Teko" }}
+            >
+              {props.content.titre} <strong> {props.content.sousTitre}</strong>
+            </Typography>
+          }
+          subheader={
+            <Typography
+              variant="subtitle1"
+              component="div"
+              sx={{ fontFamily: "Teko" }}
+            >
+              {props.content.definition}
+            </Typography>
+          }
+        />
         <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and
-            set aside for 10 minutes.
-          </Typography>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet
-            over medium-high heat. Add chicken, shrimp and chorizo, and cook,
-            stirring occasionally until lightly browned, 6 to 8 minutes.
-            Transfer shrimp to a large plate and set aside, leaving chicken and
-            chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes,
-            onion, salt and pepper, and cook, stirring often until thickened and
-            fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2
-            cups chicken broth; bring to a boil.
+          <Typography variant="body2" align="justify">
+            {props.content.texte}
           </Typography>
         </CardContent>
-      </Collapse>
-    </Card>
+      </Card>
+    </>
   );
 }
