@@ -284,14 +284,14 @@ function ContactMe() {
                 )}
               />
             </Grid>
-            <Grid item xs={10} md={6}>
+            <Grid item xs={"auto"} md={6}>
               <ReCAPTCHA
                 theme="dark"
                 sitekey="6LdNBvsbAAAAAPe1tQhZ22Q-5Xy-Ia44tJfWua3T"
                 onChange={() => setReCaptcha(true)}
               />
             </Grid>
-            <Grid item xs={2} md={6} sx={{ marginLeft: -5 }}>
+            <Grid item xs={2} md={6}>
               <Button
                 variant="contained"
                 sx={{ marginTop: 2 }}
