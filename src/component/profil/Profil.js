@@ -22,8 +22,8 @@ function Profil() {
           alt="profil pic"
           src={profilPic}
           sx={{
-            width: 80,
-            height: 80,
+            width: 120,
+            height: 120,
           }}
         />
 
@@ -35,32 +35,26 @@ function Profil() {
         >
           Nicolas Leroy
         </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Chip
-            variant="outlined"
-            sx={{
-              color: "white",
-              background: "rgba(72, 74, 80, 0.70)",
-              height: 40,
-              fontSize: "1.2em",
-              marginTop: 2,
-            }}
-            label="Développeur Web"
-          />
-        </Box>
+
         <Typography
-          sx={{ fontFamily: "Teko", marginTop: 3 }}
+          sx={{ fontFamily: "Teko", marginTop: 1 }}
           align="center"
           variant="h5"
           component="div"
         >
-          [REACT] {"< "} Lens || Lille{" >"}
+          [REACT - PHP] {"< "} Lens || Lille{" >"}
+        </Typography>
+        <Typography
+          sx={{
+            fontFamily: "Teko",
+            marginTop: 2,
+            fontSize: "1.7rem",
+            fontWeight: "bold",
+          }}
+          align="center"
+          component="div"
+        >
+          nicoleroydev@gmail.com
         </Typography>
       </CardContent>
       <CardActions>
