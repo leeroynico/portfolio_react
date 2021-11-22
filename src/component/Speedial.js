@@ -6,7 +6,7 @@ import ContactMailIcon from "@material-ui/icons/ContactMail";
 import PhoneIcon from "@material-ui/icons/Phone";
 import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import Dialog from "./alert/Dialog";
-import cv from "../images/CV_Nicolas_Leroy.pdf";
+import cv from "../images/cv.pdf";
 
 export default function BasicSpeedDial() {
   const [active, setActive] = useState(false);
