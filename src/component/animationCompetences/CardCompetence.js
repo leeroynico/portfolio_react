@@ -7,12 +7,12 @@ import {
   Divider,
   Typography,
 } from "@material-ui/core";
+import { Label } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 import "./cardCompetenceStyle.css";
 import reactLogo from "../../images/langages/react.png";
 import php from "../../images/langages/php.png";
-import html from "../../images/langages/html5.png";
 import js from "../../images/langages/JS.png";
-import css from "../../images/langages/css.png";
 import bootstrap from "../../images/langages/bootstrap.png";
 import WordPress from "../../images/langages/WordPress.png";
 import figma from "../../images/langages/figma.png";
@@ -21,30 +21,34 @@ import fcpx from "../../images/langages/fcpx.png";
 import git from "../../images/langages/git.png";
 import mui from "../../images/langages/mui.png";
 import spring from "../../images/langages/spring.png";
-import woo from "../../images/langages/woo.png";
+import symfony from "../../images/langages/symfony.png";
+import redux from "../../images/langages/redux.png";
+import apiPlatform from "../../images/langages/apiPlatform.png";
+import heroku from "../../images/langages/heroku.png";
 
 const frontLogo = [
   { img: reactLogo, titre: "react" },
   { img: reactLogo, titre: "react Native" },
-  { img: html, titre: "html" },
+  { img: redux, titre: "redux" },
   { img: js, titre: "js" },
-  { img: css, titre: "css" },
 ];
 const backLogo = [
   { img: php, titre: "php" },
-  { img: WordPress, titre: "WordPress" },
   { img: sql, titre: "Mysql" },
-  { img: woo, titre: "Woo Commerce" },
+  { img: symfony, titre: "Symfony" },
+  { img: WordPress, titre: "WordPress" },
 ];
 const skillsLogo = [
   { img: figma, titre: "figma" },
   { img: fcpx, titre: "video edit" },
-  { img: git, titre: "git - Git Hub" },
+  { img: git, titre: "git" },
+  { img: heroku, titre: "heroku" },
 ];
 const frameworksLogo = [
   { img: mui, titre: "material-UI" },
   { img: bootstrap, titre: "bootstrap" },
   { img: spring, titre: "react-spring " },
+  { img: apiPlatform, titre: "api-platform " },
 ];
 
 const category = [
@@ -73,9 +77,11 @@ export default function CardCompetence() {
                     sx={{
                       color: "white",
                       background: "rgba(255,255,255,0.3)",
-                      height: 35,
+                      height: 40,
                       fontSize: "1.2em",
                     }}
+                    component={Link}
+                    to={"projet/" + x.titre}
                   />
                 </span>
               ))

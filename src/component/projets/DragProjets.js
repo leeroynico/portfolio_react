@@ -5,7 +5,7 @@ import allProjets from "./AllProjets";
 import { useSprings, animated } from "react-spring";
 import { Typography } from "@material-ui/core";
 
-export default function DragProjets() {
+export default function DragProjets(props) {
   useEffect(() => {
     const preventDefault = (e) => e.preventDefault();
     document.addEventListener("gesturestart", preventDefault);
@@ -33,7 +33,7 @@ export default function DragProjets() {
   return (
     <>
       <Typography align="center" variant="h3" sx={{ fontFamily: "Teko" }}>
-        Mes 'sides' Projets
+        sides projects
       </Typography>
 
       <div

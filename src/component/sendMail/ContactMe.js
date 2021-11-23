@@ -309,7 +309,7 @@ function ContactMe() {
 }
 const exemplesSentences = [
   {
-    label: "Bonjour Nicolas, je veux t'embaucher, contactes moi ! ",
+    label: "Bonjour Nicolas, je veux t'embaucher, contacte moi ! ",
   },
   { label: "Moi aussi je supporte le RC LENS ! " },
   { label: "Tu codes avec le Q c'est dead ! " },

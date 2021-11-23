@@ -26,7 +26,25 @@ function Profil() {
             height: 120,
           }}
         />
-
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Chip
+            variant="outlined"
+            sx={{
+              color: "white",
+              background: "rgba(72, 74, 80, 0.70)",
+              height: 40,
+              fontSize: "1.2em",
+              marginBottom: 1,
+            }}
+            label="Développeur Web React"
+          />
+        </Box>
         <Typography
           sx={{ fontFamily: "Teko" }}
           align="center"
@@ -37,17 +55,16 @@ function Profil() {
         </Typography>
 
         <Typography
-          sx={{ fontFamily: "Teko", marginTop: 1 }}
+          sx={{ fontFamily: "Teko" }}
           align="center"
           variant="h5"
           component="div"
         >
-          [REACT - PHP] {"< "} Lens || Lille{" >"}
+          REACT - PHP
         </Typography>
         <Typography
           sx={{
             fontFamily: "Teko",
-            marginTop: 2,
             fontSize: "1.7rem",
             fontWeight: "bold",
           }}
@@ -55,6 +72,18 @@ function Profil() {
           component="div"
         >
           nicoleroydev@gmail.com
+        </Typography>
+        <Typography
+          sx={{
+            fontFamily: "Teko",
+            fontSize: "1.7rem",
+            fontWeight: "bold",
+            marginBottom: "-20px",
+          }}
+          align="center"
+          component="div"
+        >
+          06 17 52 84 97
         </Typography>
       </CardContent>
       <CardActions>

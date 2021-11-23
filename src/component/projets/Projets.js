@@ -11,6 +11,7 @@ import {
 import ControlPointIcon from "@material-ui/icons/ControlPoint";
 import "./projetStyle.css";
 import DialogProjetsInfos from "./DialogProjetInfos";
+import { Link } from "react-router-dom";
 
 export default function Projets(props) {
   const refPosition = useRef();
@@ -47,12 +48,11 @@ export default function Projets(props) {
         setActive={setActiveDialog}
         content={props.content}
       />
-
       <Card
         ref={refPosition}
         className="cardContainer"
         style={{
-          width: 160,
+          width: 200,
           height: 500,
           opacity:
             windowSize.width < 900
@@ -86,6 +86,8 @@ export default function Projets(props) {
               sx={{ color: "#007bb5", marginTop: 1.5 }}
               size="large"
               onClick={() => setActiveDialog(true)}
+              component={Link}
+              to={"projet/" + props.content.id}
             >
               <ControlPointIcon />
             </IconButton>
