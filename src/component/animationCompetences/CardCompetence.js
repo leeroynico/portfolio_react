@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import {
   Chip,
   List,
@@ -6,6 +7,7 @@ import {
   Avatar,
   Divider,
   Typography,
+  Tooltip,
 } from "@material-ui/core";
 import { Label } from "@material-ui/icons";
 import { Link } from "react-router-dom";
@@ -58,7 +60,8 @@ const category = [
   { titre: "skills", logos: skillsLogo },
 ];
 
-export default function CardCompetence() {
+export default function CardCompetence(props) {
+  const [clickAvailable, setClickAvailable] = useState(false);
   return (
     <List id="listTechno">
       {category.map((item, i) => (
@@ -70,19 +73,25 @@ export default function CardCompetence() {
             {item.logos
               .map((x, index) => (
                 <span key={index} className="center">
-                  <Chip
-                    avatar={<Avatar alt={x.img} src={x.img} />}
-                    label={x.titre}
-                    variant="outlined"
-                    sx={{
-                      color: "white",
-                      background: "rgba(255,255,255,0.3)",
-                      height: 40,
-                      fontSize: "1.2em",
-                    }}
-                    component={Link}
-                    to={"projet/" + x.titre}
-                  />
+                  <Tooltip
+                    title="projets concernés"
+                    followCursor
+                    disableHoverListener={props.flipped ? false : true}
+                  >
+                    <Chip
+                      avatar={<Avatar alt={x.img} src={x.img} />}
+                      label={x.titre}
+                      variant="outlined"
+                      sx={{
+                        color: "white",
+                        background: "rgba(255,255,255,0.3)",
+                        height: 40,
+                        fontSize: "1.2em",
+                      }}
+                      component={props.flipped ? Link : ""}
+                      to={"projet/" + x.titre}
+                    />
+                  </Tooltip>
                 </span>
               ))
               .slice(0, 2)}
@@ -101,12 +110,19 @@ export default function CardCompetence() {
                       height: 35,
                       fontSize: "1.2em",
                     }}
+                    component={props.flipped ? Link : ""}
+                    to={"projet/" + x.titre}
                   />
                 </span>
               ))
               .slice(2, item.logos.length)}
           </ListItem>
-          <Divider sx={{ borderColor: "white" }} />
+          {i !== category.length - 1 ? (
+            <Divider sx={{ borderColor: "white" }} />
+          ) : (
+            ""
+          )}
+          {/* <Divider sx={{ borderColor: "white" }} /> */}
         </div>
       ))}
     </List>

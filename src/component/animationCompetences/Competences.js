@@ -17,7 +17,6 @@ export default function Competences() {
     <div onClick={() => setFlipped(!flipped)} className="containerFlipp">
       <animated.div
         style={{
-          //  zIndex: 2,
           opacity: opacity.to((o) => 1 - o),
           transform,
           cursor: "pointer",
@@ -36,7 +35,7 @@ export default function Competences() {
           width: "100%",
         }}
       >
-        <CardCompetences />
+        <CardCompetences flipped={flipped ? true : false} />
       </animated.div>
     </div>
   );

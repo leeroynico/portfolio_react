@@ -15,7 +15,7 @@ const allProjets = [
       "  Application mobile pour aider les compétiteurs de badminton à s'entrainer seuls",
     img: appImg,
     dialogContent: {
-      technos: ["react native", "expo", "expo Speech"],
+      technos: ["react Native", "expo", "expo Speech"],
       url: "",
       texte: "bientôt disponible sur les plateformes de téléchargement",
       github: "https://github.com/leeroynico/BadmintonCoach",
