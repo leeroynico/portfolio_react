@@ -12,12 +12,13 @@ const allProjets = [
     sousTitre: "Mon Coach",
     definition: "App Mobile [React Native]",
     texte:
-      "  Application mobile pour aider les compétiteurs de badminton à s'entrainer seuls",
+      "  Application mobile pour aider les compétiteurs de badminton à s'entrainer seuls.",
     img: appImg,
     dialogContent: {
       technos: ["react Native", "expo", "expo Speech"],
-      url: "",
-      texte: "bientôt disponible sur les plateformes de téléchargement",
+      url: "https://leeroynico.github.io/shadowBadmintonGenerator",
+      texte:
+        "Bientôt disponible sur les plateformes de téléchargement. En attendant visiter le POC sur web",
       github: "https://github.com/leeroynico/BadmintonCoach",
     },
   },
@@ -57,7 +58,7 @@ const allProjets = [
       "Gestion et stockage des résultats des compétiteurs de badminton, invitations pour les matchs.",
     img: bclImg,
     dialogContent: {
-      technos: ["php", "autoloader", "phpmailer", "boostrap"],
+      technos: ["php", "autoloader", "phpmailer", "bootstrap"],
       url: "https://desolate-hamlet-21501.herokuapp.com/",
       texte:
         "contactez moi pour avoir un accès 'guest' pour vous connecter au site.",

@@ -13,7 +13,7 @@ import github from "../../images/reseaux/github.png";
 import linkedin from "../../images/reseaux/linkedinlogo.png";
 import "./profilStyle.css";
 
-function Profil() {
+function Profil(props) {
   return (
     <Card id="profilCard">
       <CardContent>
@@ -65,7 +65,7 @@ function Profil() {
         <Typography
           sx={{
             fontFamily: "Teko",
-            fontSize: "1.7rem",
+            fontSize: props.windowSize.width < 900 ? "1.4rem" : "1.7rem",
             fontWeight: "bold",
           }}
           align="center"

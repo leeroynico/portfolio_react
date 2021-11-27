@@ -63,18 +63,18 @@ function Home() {
         <Grid container spacing={1} justifyContent="space-around">
           <Grid item xs={1} md={3}></Grid>
           <Grid item xs={9} md={6}>
-            <Profil />
+            <Profil windowSize={windowSize} />
           </Grid>
           <Grid
             item
             xs={1}
             md={3}
             container
-            sx={{ justifyContent: "flex-end" }}
+            direction="row"
+            justifyContent="flex-end"
+            sx={{ marginLeft: windowSize.width < 900 ? "5%" : "" }}
           >
-            <Grid item>
-              <SwitchDarkMode setDarkMode={activeDarkMode} />
-            </Grid>
+            <SwitchDarkMode setDarkMode={activeDarkMode} />
           </Grid>
           <Grid
             item

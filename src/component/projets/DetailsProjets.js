@@ -8,13 +8,16 @@ import {
   DialogActions,
   ListItem,
   ListItemText,
+  CardHeader,
   Typography,
   Button,
+  IconButton,
   Grid,
 } from "@material-ui/core";
+import ControlPointIcon from "@material-ui/icons/ControlPoint";
 import { Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import "./projetStyle.css";
 
 function DetailsProjets(match) {
   const projetFilter = allProjets.filter(
@@ -29,102 +32,123 @@ function DetailsProjets(match) {
   const darkMode = localStorage.getItem("darkMode");
   console.log("projet filter =>", projetFilter);
   console.log(match.match.params.id);
-  // console.log(isNaN(match.match.params.id));
-  // console.log('projets : ', projetFilter);
+
   return (
     <div
       style={{
-        height: "100vh",
         backgroundColor: darkMode === "true" ? "#111927" : "#50e3c2",
         backgroundImage:
           darkMode === "true"
             ? `radial-gradient(at 47% 33%, #0079B3, transparent 59%)`
             : `radial-gradient(at 47% 33%, #00b2fe, transparent 59%)`,
+        paddingBottom: "5%",
       }}
     >
-      <Box>
-        <Button
-          variant="contained"
-          startIcon={<HomeIcon />}
-          sx={{ marginLeft: "40%", marginRight: "auto", marginTop: "5%" }}
-          size="large"
-          to="/"
-          component={Link}
-        >
-          HOME
-        </Button>
-        {projet ? (
-          <Grid container spacing={3}>
-            <Grid item xs={11} md={5}>
-              <Card
-                sx={{
-                  display: "flex",
-                  marginTop: "5%",
-                  backgroundColor: "rgb(32, 38, 45)",
-                  padding: "1.5rem",
-                }}
-              >
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <CardContent
-                    sx={{
-                      //flex: "1 0 auto",
-                      backgroundColor: "rgb(18, 18, 18)",
-                      color: "whitesmoke",
-                    }}
+      <Grid
+        container
+        justify="center"
+        alignItems="fex-start"
+        sx={{ marginLeft: "200px" }}
+        spacing={2}
+      >
+        <Grid item xs={12} sx={{ marginTop: "4%" }}>
+          <Button
+            variant="contained"
+            startIcon={<HomeIcon />}
+            size="large"
+            to="/"
+            component={Link}
+          >
+            HOME
+          </Button>
+        </Grid>
+        {projetFilter.map((projet, i) => (
+          <Grid item xs={12} md={5} sx={{ marginTop: "5%" }}>
+            <Card
+              style={{
+                width: 250,
+              }}
+              className="cardContainer"
+            >
+              <CardMedia
+                component="img"
+                alt={projet.img}
+                height="240"
+                image={projet.img}
+                title="appImg"
+              />
+              <CardHeader
+                title={
+                  <>
+                    <Typography
+                      variant="h6"
+                      component="div"
+                      sx={{ fontFamily: "Teko" }}
+                    >
+                      {projet.titre}
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      component="div"
+                      sx={{ fontFamily: "Teko" }}
+                    >
+                      <strong> {projet.sousTitre}</strong>
+                    </Typography>
+                  </>
+                }
+                subheader={
+                  <Typography
+                    variant="subtitle1"
+                    component="span"
+                    sx={{ fontFamily: "Teko", fontSize: "1.4rem" }}
                   >
-                    <Typography component="div" variant="h5">
-                      {projet.sousTitre}
-                    </Typography>
-                    <Typography variant="subtitle1" component="div">
-                      {projet.dialogContent.technos.map((item, i) => (
-                        <span key={i} style={{ color: "grey" }}>
-                          {`[${item}]`}
-                          &nbsp;
-                        </span>
-                      ))}
-                    </Typography>
-                    <Typography component="div" variant="subtitle1">
-                      {projet.dialogContent.texte}
-                    </Typography>
-                    <Typography component="div" variant="subtitle1">
-                      {projet.texte}
-                    </Typography>
-                    <Typography component="div" variant="subtitle1">
-                      {projet.dialogContent.url && (
-                        <a href={projet.dialogContent.url} target="blank">
-                          visitez le site
-                        </a>
-                      )}
-                    </Typography>
-                    <Typography component="div" variant="subtitle1">
-                      {projet.dialogContent.github === "" ? (
-                        ""
-                      ) : (
-                        <a href={projet.dialogContent.github} target="blank">
-                          github
-                        </a>
-                      )}
-                    </Typography>
-                  </CardContent>
-                </Box>
-                <CardMedia
-                  component="img"
-                  sx={{ width: 151 }}
-                  image={projet.img}
-                  alt={`mon projet${projet.id}`}
-                />
-              </Card>
-            </Grid>
+                    {projet.dialogContent.technos.map((item, i) => (
+                      <span key={i}>{`[${item}]`}</span>
+                    ))}
+                  </Typography>
+                }
+              />
+              <CardContent>
+                <Typography variant="body2" align="justify">
+                  {projet.texte}
+                </Typography>
+                <Typography variant="body2" align="justify">
+                  {projet.dialogContent.texte}
+                </Typography>
+                <Button
+                  fullWidth
+                  target="_blank"
+                  variant="text"
+                  href={projet.dialogContent.url}
+                >
+                  visiter le site
+                </Button>
+                <Button
+                  fullWidth
+                  element="a"
+                  target="_blank"
+                  variant="text"
+                  color="secondary"
+                  sx={{ marginTop: "4%" }}
+                  href={projet.dialogContent.github}
+                >
+                  aller sur le github
+                </Button>
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  color="warning"
+                  to={"/"}
+                  component={Link}
+                  sx={{ marginTop: "5%" }}
+                >
+                  retourner à l'accueil
+                </Button>
+              </CardContent>
+            </Card>
           </Grid>
-        ) : (
-          ""
-        )}
-      </Box>
+        ))}
+      </Grid>
     </div>
   );
 }
