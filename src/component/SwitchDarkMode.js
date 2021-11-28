@@ -9,7 +9,7 @@ export default function SwitchDarkMode(props) {
     <>
       <FormGroup sx={{ marginTop: 1 }}>
         <FormControlLabel
-          control={<MUISwitch />}
+          control={<MUISwitch mode={modeLight} />}
           onClick={() => props.setDarkMode()}
           label=""
           onChange={() => {

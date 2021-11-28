@@ -1,5 +1,6 @@
 html {
   color: whitesmoke;
+  height: 100%;
 }
 
 .border {
@@ -11,4 +12,11 @@ html {
 
 .mobile {
   overflow-x: hidden;
+}
+
+html,
+body,
+#app,
+#app > div {
+  height: 100%;
 }

@@ -23,16 +23,15 @@ function Home() {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
-    localStorage.setItem("darkMode", "true");
+    //  localStorage.setItem("darkMode", "true");
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const [darkMode, setDarkMode] = useState(false);
+  const localUserMode = JSON.parse(localStorage.getItem("darkMode")) || false;
+  const [darkMode, setDarkMode] = useState(localUserMode);
+  console.log(localUserMode);
   const activeDarkMode = () => {
     setDarkMode(!darkMode);
-    darkMode
-      ? localStorage.setItem("darkMode", "true")
-      : localStorage.setItem("darkMode", "false");
+    localStorage.setItem("darkMode", !darkMode);
   };
 
   const { x } = useSpring({

@@ -49,11 +49,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedSwitches() {
+export default function CustomizedSwitches(props) {
+  const localUserMode = JSON.parse(localStorage.getItem("darkMode")) || false;
   return (
     <FormGroup>
       <FormControlLabel
-        control={<MaterialUISwitch defaultChecked />}
+        control={<MaterialUISwitch defaultChecked={!localUserMode} />}
         label=""
       />
     </FormGroup>

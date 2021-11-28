@@ -13,8 +13,7 @@ import {
   Button,
   IconButton,
   Grid,
-} from "@material-ui/core";
-import ControlPointIcon from "@material-ui/icons/ControlPoint";
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import "./projetStyle.css";
@@ -30,28 +29,25 @@ function DetailsProjets(match) {
     (projet) => projet.id === Number(match.match.params.id)
   );
   const darkMode = localStorage.getItem("darkMode");
-  console.log("projet filter =>", projetFilter);
-  console.log(match.match.params.id);
 
   return (
     <div
       style={{
-        backgroundColor: darkMode === "true" ? "#111927" : "#50e3c2",
-        backgroundImage:
-          darkMode === "true"
-            ? `radial-gradient(at 47% 33%, #0079B3, transparent 59%)`
-            : `radial-gradient(at 47% 33%, #00b2fe, transparent 59%)`,
+        backgroundColor: darkMode === "false" ? "#111927" : "#50e3c2",
+        backgroundImage: darkMode
+          ? `radial-gradient(at 47% 33%, #0079B3, transparent 59%)`
+          : `radial-gradient(at 47% 33%, #00b2fe, transparent 59%)`,
         paddingBottom: "5%",
+        height: projetFilter.length === 1 ? "100%" : "",
       }}
     >
       <Grid
         container
-        justify="center"
-        alignItems="fex-start"
-        sx={{ marginLeft: "200px" }}
+        justifyContent="space-around"
+        alignItems="flex-start"
         spacing={2}
       >
-        <Grid item xs={12} sx={{ marginTop: "4%" }}>
+        <Grid item xs={12} sx={{ marginTop: "4%", textAlign: "center" }}>
           <Button
             variant="contained"
             startIcon={<HomeIcon />}
@@ -63,90 +59,99 @@ function DetailsProjets(match) {
           </Button>
         </Grid>
         {projetFilter.map((projet, i) => (
-          <Grid item xs={12} md={5} sx={{ marginTop: "5%" }}>
-            <Card
-              style={{
-                width: 250,
-              }}
-              className="cardContainer"
+          <>
+            {projetFilter.length !== 1 ? <Grid item xs={2} sm={1}></Grid> : ""}
+            <Grid
+              key={i}
+              item
+              xs={8}
+              sm={projetFilter.length === 1 ? 6 : 4}
+              sx={{ marginTop: "5%" }}
             >
-              <CardMedia
-                component="img"
-                alt={projet.img}
-                height="240"
-                image={projet.img}
-                title="appImg"
-              />
-              <CardHeader
-                title={
-                  <>
+              <Card className="cardContainer">
+                <CardMedia
+                  component="img"
+                  alt={projet.img}
+                  height="240"
+                  image={projet.img}
+                  title="appImg"
+                />
+                <CardHeader
+                  title={
+                    <>
+                      <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ fontFamily: "Teko" }}
+                      >
+                        {projet.titre}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ fontFamily: "Teko" }}
+                      >
+                        <strong> {projet.sousTitre}</strong>
+                      </Typography>
+                    </>
+                  }
+                  subheader={
                     <Typography
-                      variant="h6"
-                      component="div"
-                      sx={{ fontFamily: "Teko" }}
+                      variant="subtitle1"
+                      component="span"
+                      sx={{ fontFamily: "Teko", fontSize: "1.4rem" }}
                     >
-                      {projet.titre}
+                      {projet.dialogContent.technos.map((item, i) => (
+                        <span key={i}>{`[${item}]`}</span>
+                      ))}
                     </Typography>
-                    <Typography
-                      variant="h6"
-                      component="div"
-                      sx={{ fontFamily: "Teko" }}
-                    >
-                      <strong> {projet.sousTitre}</strong>
-                    </Typography>
-                  </>
-                }
-                subheader={
-                  <Typography
-                    variant="subtitle1"
-                    component="span"
-                    sx={{ fontFamily: "Teko", fontSize: "1.4rem" }}
-                  >
-                    {projet.dialogContent.technos.map((item, i) => (
-                      <span key={i}>{`[${item}]`}</span>
-                    ))}
+                  }
+                />
+                <CardContent>
+                  <Typography variant="body2" align="justify">
+                    {projet.texte}
                   </Typography>
-                }
-              />
-              <CardContent>
-                <Typography variant="body2" align="justify">
-                  {projet.texte}
-                </Typography>
-                <Typography variant="body2" align="justify">
-                  {projet.dialogContent.texte}
-                </Typography>
-                <Button
-                  fullWidth
-                  target="_blank"
-                  variant="text"
-                  href={projet.dialogContent.url}
-                >
-                  visiter le site
-                </Button>
-                <Button
-                  fullWidth
-                  element="a"
-                  target="_blank"
-                  variant="text"
-                  color="secondary"
-                  sx={{ marginTop: "4%" }}
-                  href={projet.dialogContent.github}
-                >
-                  aller sur le github
-                </Button>
-                <Button
-                  fullWidth
-                  variant="outlined"
-                  color="warning"
-                  to={"/"}
-                  component={Link}
-                  sx={{ marginTop: "5%" }}
-                >
-                  retourner à l'accueil
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
+                  <Typography variant="body2" align="justify">
+                    {projet.dialogContent.texte}
+                  </Typography>
+                  <Button
+                    fullWidth
+                    target="_blank"
+                    variant="text"
+                    href={projet.dialogContent.url}
+                  >
+                    visiter le site
+                  </Button>
+                  {projet.dialogContent.github ? (
+                    <Button
+                      fullWidth
+                      element="a"
+                      target="_blank"
+                      variant="text"
+                      color="secondary"
+                      sx={{ marginTop: "4%" }}
+                      href={projet.dialogContent.github}
+                    >
+                      aller sur le github
+                    </Button>
+                  ) : (
+                    ""
+                  )}
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    color="warning"
+                    to={"/"}
+                    component={Link}
+                    sx={{ marginTop: "5%" }}
+                  >
+                    retourner à l'accueil
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid>
+            {projetFilter.length !== 1 ? <Grid item xs={2} sm={1}></Grid> : ""}
+          </>
         ))}
       </Grid>
     </div>
