@@ -85,10 +85,9 @@ const allProjets = [
       technos: [
         "react.js",
         "use Gesture",
-        "spring react",
         "material ui",
         "git",
-        "react-spring ",
+        "react-spring",
       ],
       url: "",
       texte:

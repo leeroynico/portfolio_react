@@ -40,16 +40,16 @@ const backLogo = [
   { img: WordPress, titre: "WordPress" },
 ];
 const skillsLogo = [
-  { img: figma, titre: "figma" },
-  { img: fcpx, titre: "video edit" },
+  { img: figma, titre: "figma", noLink: "true" },
+  { img: fcpx, titre: "video edit", noLink: "true" },
   { img: git, titre: "git" },
   { img: heroku, titre: "heroku" },
 ];
 const frameworksLogo = [
   { img: mui, titre: "material-UI" },
   { img: bootstrap, titre: "bootstrap" },
-  { img: spring, titre: "react-spring " },
-  { img: apiPlatform, titre: "api-platform " },
+  { img: spring, titre: "react-spring" },
+  { img: apiPlatform, titre: "api-platform" },
 ];
 
 const category = [
@@ -108,7 +108,7 @@ export default function CardCompetence(props) {
                       height: 35,
                       fontSize: "1.2em",
                     }}
-                    component={props.flipped ? Link : ""}
+                    component={props.flipped || x.noLink !== "true" ? Link : ""}
                     to={"projet/" + x.titre}
                   />
                 </span>
@@ -120,7 +120,6 @@ export default function CardCompetence(props) {
           ) : (
             ""
           )}
-          {/* <Divider sx={{ borderColor: "white" }} /> */}
         </div>
       ))}
     </List>
