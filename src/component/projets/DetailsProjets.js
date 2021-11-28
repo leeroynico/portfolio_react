@@ -1,17 +1,12 @@
 import React from "react";
 import allProjets from "./AllProjets";
 import {
-  Box,
   Card,
   CardContent,
   CardMedia,
-  DialogActions,
-  ListItem,
-  ListItemText,
   CardHeader,
   Typography,
   Button,
-  IconButton,
   Grid,
 } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -25,9 +20,6 @@ function DetailsProjets(match) {
       item.dialogContent.technos.includes(match.match.params.id)
   );
 
-  const projet = allProjets.find(
-    (projet) => projet.id === Number(match.match.params.id)
-  );
   const darkMode = localStorage.getItem("darkMode");
 
   return (

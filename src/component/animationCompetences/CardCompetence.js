@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import {
   Chip,
   List,
@@ -9,9 +8,9 @@ import {
   Typography,
   Tooltip,
 } from "@material-ui/core";
-import { Label } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import "./cardCompetenceStyle.css";
+//import des images
 import reactLogo from "../../images/langages/react.png";
 import php from "../../images/langages/php.png";
 import js from "../../images/langages/JS.png";
@@ -37,7 +36,7 @@ const frontLogo = [
 const backLogo = [
   { img: php, titre: "php" },
   { img: sql, titre: "Mysql" },
-  { img: symfony, titre: "Symfony" },
+  { img: symfony, titre: "symfony" },
   { img: WordPress, titre: "WordPress" },
 ];
 const skillsLogo = [
@@ -61,7 +60,6 @@ const category = [
 ];
 
 export default function CardCompetence(props) {
-  const [clickAvailable, setClickAvailable] = useState(false);
   return (
     <List id="listTechno">
       {category.map((item, i) => (

@@ -3,7 +3,7 @@ import eshopImg from "../../images/projets/eshopprojet.png";
 import speculosImg from "../../images/projets/lesspeculosprojet.png";
 import bclImg from "../../images/projets/bcl.png";
 import PortfolioImg from "../../images/projets/portfolio.png";
-import DiceGameImg from "../../images/projets/dicegame.png";
+import ecf from "../../images/projets/ecf.png";
 
 const allProjets = [
   {
@@ -15,7 +15,7 @@ const allProjets = [
       "  Application mobile pour aider les compétiteurs de badminton à s'entrainer seuls.",
     img: appImg,
     dialogContent: {
-      technos: ["react Native", "expo", "expo Speech"],
+      technos: ["react Native", "expo", "expo Speech", "redux", "git"],
       url: "https://leeroynico.github.io/shadowBadmintonGenerator",
       texte:
         "Bientôt disponible sur les plateformes de téléchargement. En attendant visiter le POC sur web",
@@ -30,7 +30,7 @@ const allProjets = [
     texte: " Site vitrine pour une Cie de théâtre locale (ou pas)",
     img: speculosImg,
     dialogContent: {
-      technos: ["html", "css", "bootstrap"],
+      technos: ["html", "css", "bootstrap", "git"],
       url: "https://leeroynico.github.io/lesspeculos/",
       github: "https://github.com/leeroynico/lesspeculos",
     },
@@ -58,8 +58,17 @@ const allProjets = [
       "Gestion et stockage des résultats des compétiteurs de badminton, invitations pour les matchs.",
     img: bclImg,
     dialogContent: {
-      technos: ["php", "autoloader", "phpmailer", "bootstrap"],
-      url: "https://desolate-hamlet-21501.herokuapp.com/",
+      technos: [
+        "php",
+        "autoloader",
+        "phpmailer",
+        "bootstrap",
+        "git",
+        "Mysql",
+        "heroku",
+        "dev-Extreme",
+      ],
+      url: "https://tdtemp.herokuapp.com/",
       texte:
         "contactez moi pour avoir un accès 'guest' pour vous connecter au site.",
       github: "",
@@ -73,25 +82,34 @@ const allProjets = [
     texte: "portfolio de moi même visité par vous même en ce moment même",
     img: PortfolioImg,
     dialogContent: {
-      technos: ["react.js", "use Gesture", "spring react web", "material ui"],
-      url: "#",
-      texte: "",
-      github: "https://github.com/leeroynico/dice_game",
+      technos: [
+        "react.js",
+        "use Gesture",
+        "spring react",
+        "material ui",
+        "git",
+        "react-spring ",
+      ],
+      url: "",
+      texte:
+        "site réalisé avec react et la dépendance react spring pour les animations et le drag",
+      github: "https://github.com/leeroynico/portfolio_react",
     },
   },
   {
-    id: 5,
+    id: 6,
     titre: "#5projet",
-    sousTitre: "jeu de dés",
-    definition: "jeu - évaluation [JAVASCRIPT - responsive] ",
+    sousTitre: "génie climatique [API rest - react JS]",
+    definition: "ECF [api platform - react] ",
     texte:
-      "petit jeu de dés effectués dans le cadre d'une évaluation lors de l'apprentissage de javascript vanilla",
-    img: DiceGameImg,
+      "dans le cadre d'une évaluation au cours de ma formation, j'ai réalisé une application qui génére des graphiques selon des données d'une Api",
+    img: ecf,
     dialogContent: {
-      technos: ["javascript", "ionic"],
+      technos: ["react", "symfony", "api-platform", "git", "heroku", "js"],
       url: "https://leeroynico.github.io/dice_game/",
-      texte: "",
-      github: "https://github.com/leeroynico/dice_game",
+      texte:
+        "pour vous connecter vous pouvez utiliser le mot de passe admin et le password passe",
+      github: "https://github.com/leeroynico/api-projet-ecf",
     },
   },
 ];

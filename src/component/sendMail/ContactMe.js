@@ -42,8 +42,6 @@ function ContactMe() {
     setAlertSucces(false);
   };
 
-  const [emailSend, setEmailSend] = useState(false);
-  const checkEmailSend = () => setEmailSend(true);
   const sendMail = () => {
     if (nom === "" || prenom === "" || mail === "") {
       setMessageAlert(
