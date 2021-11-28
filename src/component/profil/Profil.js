@@ -41,6 +41,7 @@ function Profil(props) {
               height: 40,
               fontSize: "1.2em",
               marginBottom: 1,
+              width: "98%",
             }}
             label="Développeur Web React"
           />
@@ -65,7 +66,7 @@ function Profil(props) {
         <Typography
           sx={{
             fontFamily: "Teko",
-            fontSize: props.windowSize.width < 900 ? "1.4rem" : "1.7rem",
+            fontSize: props.windowSize.width < 900 ? "1.2rem" : "1.7rem",
             fontWeight: "bold",
           }}
           align="center"

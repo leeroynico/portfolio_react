@@ -31,7 +31,9 @@ function DetailsProjets(match) {
           : `radial-gradient(at 47% 33%, #00b2fe, transparent 59%)`,
         paddingBottom: "5%",
         height:
-          projetFilter.length === 1 || projetFilter.length === 0 ? "100%" : "",
+          projetFilter.length === 1 || projetFilter.length === 0
+            ? "100lvh"
+            : "",
       }}
     >
       <Grid
