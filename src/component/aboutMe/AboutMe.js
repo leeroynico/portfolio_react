@@ -28,13 +28,10 @@ function AboutMe() {
             paragraph
           >
             Mon sérieux et ma rigeur ont toujours été mes atouts. J'aime
-            apprendre et trouver les solutions pour faire avancer le projet et
-            l'équipe, le tout avec agilité et dans la convivialité. Je viens de
-            valider une formation qualifiante en e-learning de développeur web
-            Full Stack avec l'école{" "}
-            <a href={linkStudy} target="blank" style={{ color: "white" }}>
-              Digital Campus Live.
-            </a>
+            résoudre des problématiques liées au code et au besoin du client, le
+            tout avec agilité et dans la convivialité. Je viens de valider une
+            formation qualifiante en e-learning de développeur web Full Stack
+            avec l'école Digital Campus Live.
           </Typography>
           <Typography
             sx={{ fontFamily: "Ubuntu Mono" }}

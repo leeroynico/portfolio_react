@@ -90,6 +90,7 @@ export default function CardCompetence(props) {
                       to={"projet/" + x.titre}
                     />
                   </Tooltip>
+                  <div></div>
                 </span>
               ))
               .slice(0, 2)}
