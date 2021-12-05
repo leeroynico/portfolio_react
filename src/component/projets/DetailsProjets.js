@@ -25,10 +25,12 @@ function DetailsProjets(match) {
   return (
     <div
       style={{
-        backgroundColor: darkMode === "false" ? "#111927" : "#50e3c2",
-        backgroundImage: darkMode
-          ? `radial-gradient(at 47% 33%, #0079B3, transparent 59%)`
-          : `radial-gradient(at 47% 33%, #00b2fe, transparent 59%)`,
+        backgroundColor:
+          darkMode === "false" || darkMode === null ? "#111927" : "#50e3c2",
+        backgroundImage:
+          darkMode === "false" || darkMode === null
+            ? `radial-gradient(at 47% 33%, #0079B3, transparent 59%)`
+            : `radial-gradient(at 47% 33%, #00b2fe, transparent 59%)`,
         paddingBottom: "5%",
         height:
           projetFilter.length === 1 || projetFilter.length === 0
@@ -55,7 +57,7 @@ function DetailsProjets(match) {
         </Grid>
 
         {projetFilter.length === 0 ? (
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={10}>
             <Typography variant="h5" sx={{ m: 3 }}>
               Malheuresement je ne peux pas vous montrer de projet sur cette
               compétence mais n'hésitez pas à consulter mon github pour voir mes
@@ -66,8 +68,11 @@ function DetailsProjets(match) {
               element="a"
               target="_blank"
               variant="contained"
-              color="secondary"
-              sx={{ marginTop: "4%" }}
+              sx={{
+                marginTop: "4%",
+                backgroundColor: "#69d7ff",
+                color: "black",
+              }}
               href="https://github.com/leeroynico"
             >
               aller sur le github
@@ -75,17 +80,20 @@ function DetailsProjets(match) {
             <Button
               fullWidth
               variant="contained"
-              color="warning"
               to={"/"}
               component={Link}
-              sx={{ marginTop: "5%" }}
+              sx={{
+                marginTop: "5%",
+                backgroundColor: "#0078a3",
+              }}
             >
               retourner à l'accueil
             </Button>
+            <div style={{ height: "250px" }}></div>
           </Grid>
         ) : (
           projetFilter.map((projet, i) => (
-            <>
+            <React.Fragment key={i}>
               {projetFilter.length !== 1 ? (
                 <Grid item xs={2} sm={1}></Grid>
               ) : (
@@ -185,7 +193,7 @@ function DetailsProjets(match) {
               ) : (
                 ""
               )}
-            </>
+            </React.Fragment>
           ))
         )}
       </Grid>

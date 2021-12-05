@@ -31,7 +31,7 @@ function AboutMe() {
             résoudre des problématiques liées au code et au besoin du client, le
             tout avec agilité et dans la convivialité. Je viens de valider une
             formation qualifiante en e-learning de développeur web Full Stack
-            avec l'école Digital Campus Live.
+            avec l'école Digital Campus Live + Studi.
           </Typography>
           <Typography
             sx={{ fontFamily: "Ubuntu Mono" }}
@@ -40,7 +40,7 @@ function AboutMe() {
             component="div"
             paragraph
           >
-            Je suis également passioné de musique et musicien {"&"} comédien (
+            Je suis également passioné de musique et musicien - comédien (
             <a href={link} target="blank" style={{ color: "white" }}>
               mes exploits
             </a>
