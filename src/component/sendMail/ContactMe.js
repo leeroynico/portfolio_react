@@ -57,6 +57,8 @@ function ContactMe() {
       setPrenom("");
       setNom("");
       setMail("");
+      setMessageOptions("");
+      setMessageWrite("");
     }
   };
 
@@ -211,6 +213,7 @@ function ContactMe() {
                 onChange={(event) => {
                   setMessageOptions(event.target.textContent);
                 }}
+                autoSelect
                 freeSolo
                 selectOnFocus
                 clearOnBlur
