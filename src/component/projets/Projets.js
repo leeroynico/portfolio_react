@@ -98,7 +98,10 @@ export default function Projets(props) {
               component="div"
               sx={{ fontFamily: "Teko" }}
             >
-              {props.content.titre} <strong> {props.content.sousTitre}</strong>
+              {props.content.titre}
+              <div>
+                <strong> {props.content.sousTitre}</strong>
+              </div>
             </Typography>
           }
           subheader={

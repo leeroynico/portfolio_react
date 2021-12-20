@@ -4,6 +4,7 @@ import speculosImg from "../../images/projets/lesspeculosprojet.png";
 import bclImg from "../../images/projets/bcl.png";
 import PortfolioImg from "../../images/projets/portfolio.png";
 import ecf from "../../images/projets/ecf.png";
+import ecommerce from "../../images/projets/ecommerceReact.png";
 
 const allProjets = [
   {
@@ -25,6 +26,19 @@ const allProjets = [
   {
     id: 2,
     titre: "#2projet",
+    sousTitre: "E-commerce react",
+    definition: "E commerce [ReactJS - API]",
+    texte: "Faux site e-commerce réalisé avec React (et Redux) ",
+    img: ecommerce,
+    dialogContent: {
+      technos: ["react", "material-UI", "redux", "git"],
+      url: "https://monfakeshop.herokuapp.com/",
+      github: "https://github.com/leeroynico/fake_e-shop",
+    },
+  },
+  {
+    id: 3,
+    titre: "#3projet",
     sousTitre: "Les spéculos",
     definition: "site statique [Bootstrap]",
     texte: " Site vitrine pour une Cie de théâtre locale (ou pas)",
@@ -36,8 +50,8 @@ const allProjets = [
     },
   },
   {
-    id: 3,
-    titre: "#3projet",
+    id: 4,
+    titre: "#4projet",
     sousTitre: "fake e-commerce",
     definition: "site statique [Word Press]",
     texte:
@@ -50,8 +64,8 @@ const allProjets = [
     },
   },
   {
-    id: 4,
-    titre: "#4projet",
+    id: 5,
+    titre: "#5projet",
     sousTitre: "Championnat BCL ",
     definition: "app interne [PHP - SQL]",
     texte:
@@ -75,8 +89,8 @@ const allProjets = [
     },
   },
   {
-    id: 5,
-    titre: "#5projet",
+    id: 6,
+    titre: "#6projet",
     sousTitre: "portfolio",
     definition: "site dynamique [REACT.JS - responsive] ",
     texte: "portfolio de moi même visité par vous même en ce moment même",
@@ -96,9 +110,9 @@ const allProjets = [
     },
   },
   {
-    id: 6,
-    titre: "#5projet",
-    sousTitre: "génie climatique [API rest - react JS]",
+    id: 7,
+    titre: "#7projet",
+    sousTitre: "génie climatique [API - react JS]",
     definition: "ECF [api platform - react] ",
     texte:
       "dans le cadre d'une évaluation au cours de ma formation, j'ai réalisé une application qui génére des graphiques selon des données d'une Api",
